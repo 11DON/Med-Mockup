@@ -1,0 +1,158 @@
+body {
+    font-family: Calibri, Arial, sans-serif;
+}
+.page-title {
+    color: #4a90d9;
+    margin: 20px 0;
+    font-style: italic;
+    font-weight: bold;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 12px;
+}
+.panel {
+    display: flex;
+    flex-direction: column;
+}
+.column {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #91c2fd;
+}
+
+.section-title{
+    font-size: 2rem;
+    color: #4a90d9;
+    margin: 10px 0;
+    font-weight: normal;
+}
+
+/* Tasks Cards */
+
+.tasks-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 10px 14px;
+    gap: 16px;
+    border: 1px solid #ccc;
+    border-left: 6px solid #4a90d9;
+    min-height: 120px;
+    cursor: pointer;
+}
+
+.card.selected {
+    background: #cffcff;
+}
+
+.card.urgent {
+    border-left: 6px solid red;
+}
+
+.face {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.title {
+    margin-bottom: 10px;
+    color: rgb(39, 130, 248)
+}
+.card .info p{
+    font-size: 19px;
+}
+
+.nationality {
+    color: green;
+}
+
+.age {
+    color: red;
+
+}
+
+.gender {
+    color: orange;
+}
+
+
+.info p,
+.side p {
+    margin: 0 0 6px;
+}
+
+.rightImg {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    font-size: 19px;
+}
+
+/* Details Panel */
+.details-box{
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+}
+.patient-header {
+    padding: 10px 20px;
+}
+.name-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.patient-name {
+    font-size: 40px;
+    margin: 0 0 10px;
+    font-weight: normal;
+    color: rgb(39, 130, 248);
+}
+
+.info-row {
+        font-size: 19px;
+
+    display: flex;
+    gap: 40px;
+    margin-bottom: 8px;
+}
+
+.actions{
+    margin-top: auto;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    padding: 10px 20px;
+}
+
+.btn{
+    padding:5px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-send { background: #7b2fbf; }
+.btn-details { background: #4a90d9; }
