@@ -1,0 +1,54 @@
+.dialog {
+  width: min(520px, 92vw);
+  max-height: 85vh;
+  padding: 0;
+  border: 1px solid #cfe0ee;
+  border-radius: 6px;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  color: #33475f;
+}
+
+.dialog::backdrop {
+  background: rgba(20, 40, 65, 0.45);
+}
+
+.content {
+  padding: 20px 24px;
+}
+
+.content h2 {
+  margin: 0 0 4px;
+  font-weight: 400;
+  color: #3f84c8;
+}
+
+.content h3 {
+  margin: 16px 0 4px;
+  font-size: 1rem;
+  color: #1e3a5f;
+}
+
+.content p,
+.content ul {
+  margin: 4px 0;
+}
+
+.content ul {
+  padding-left: 20px;
+}
+
+.sub,
+.none {
+  color: #6b7f95;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 8px 28px;
+  border: 1px solid #2c6aa8;
+  border-radius: 3px;
+  background: #3f84c8;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}

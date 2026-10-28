@@ -1,0 +1,72 @@
+body {
+    font-family: Calibri, Arial, sans-serif;
+}
+
+.mainTitle {
+    color: #4a90d9;
+    margin: 20px 0;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pageTitle {
+    color: #4a90d9;
+    margin: 20px 0;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.gridContainer {
+    width: 100%;
+    box-sizing: border-box;
+}
+.stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.divider {
+    position: relative;        /* anchors the handle */
+    flex: 0 0 8px;             /* the actual gap between the panels (same as your old 8px gap) */
+    background: transparent;
+    cursor: col-resize;
+    touch-action: none;
+    outline: none;
+    z-index: 1;                /* handle draws above the panel borders */
+}
+
+/* The gradient grip */
+.divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 130px;
+    background: linear-gradient(to bottom, #d6e6fa 0%, #7fb0e8 45%, #3a73b8 100%);
+    border: 1px solid #6f9bd1;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    transition: filter 0.15s;
+}
+
+/* The thin dark center line */
+.divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 100px;
+    background: #1f4e8c;
+}
+
+.divider:hover::before,
+.divider:active::before,
+.divider:focus-visible::before {
+    filter: brightness(0.92);
+}

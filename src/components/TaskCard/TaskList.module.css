@@ -1,0 +1,41 @@
+.panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.sectionTitle {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    color: #4a90d9;
+    margin: 10px 0;
+    font-weight: normal;
+}
+
+.column {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    container-type: inline-size;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #91c2fd;
+    overflow: hidden;
+}
+
+.tasksCards {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(8px, 1.5vw, 12px);
+    min-width: 0;
+    padding: clamp(6px, 1vw, 10px);
+}
+
+@media (max-width: 480px) {
+    .tasksCards {
+        gap: 6px;
+        padding: 6px;
+    }
+}
