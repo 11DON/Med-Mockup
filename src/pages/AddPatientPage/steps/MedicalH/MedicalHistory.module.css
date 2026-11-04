@@ -1,0 +1,239 @@
+.form {
+  --field-font-size: 15px;
+  --field-label-width: 165px;
+  --field-control-height: 28px;
+  --field-control-padding: 3px 8px;
+  --field-gap: 10px;
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+  color: #5b9bd5;
+  font-size: 15px;
+}
+
+.section {
+  min-width: 0;
+  margin: 0;
+  padding: 8px 12px 12px;
+  border: 1px solid #8db9e8;
+}
+
+.section legend {
+  padding: 0 6px;
+  color: #5b9bd5;
+  font-size: 20px;
+}
+
+.checkGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 28px;
+  row-gap: 7px;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 0;
+  color: #5b9bd5;
+  line-height: 1.25;
+  text-align: right;
+}
+
+.check input,
+.disorderOptions input {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #5b9bd5;
+}
+
+.surgerySection {
+  position: relative;
+  min-height: 104px;
+  padding-bottom: 48px;
+}
+
+.surgeryList {
+  display: grid;
+  gap: 8px;
+  max-width: 580px;
+}
+
+.surgery {
+  display: grid;
+  gap: 8px;
+}
+
+.surgeryField {
+  --field-label-width: 185px;
+}
+
+.surgeryField > span {
+  color: #5b9bd5;
+}
+
+.surgeryField input,
+.otherField input {
+  box-sizing: border-box;
+  min-width: 0;
+  height: 28px;
+  padding: 3px 8px;
+  border: 1px solid #8db9e8;
+  border-radius: 0;
+  background: #fff;
+  color: #5b9bd5;
+  font: inherit;
+}
+
+.link {
+  position: absolute;
+  right: 44px;
+  bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #5b9bd5;
+  cursor: pointer;
+  font: inherit;
+}
+
+.link span {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.disordersGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px 28px;
+}
+
+.disorderField {
+  --field-label-width: 185px;
+}
+
+.multiSelect {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  color: #5b9bd5;
+}
+
+.multiSelect summary {
+  box-sizing: border-box;
+  min-height: 28px;
+  overflow: hidden;
+  padding: 4px 30px 4px 8px;
+  border: 1px solid #8db9e8;
+  background: #fff;
+  cursor: pointer;
+  list-style: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.multiSelect summary::-webkit-details-marker {
+  display: none;
+}
+
+.multiSelect summary::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  width: 26px;
+  height: 28px;
+  place-items: center;
+  border-left: 1px solid #8db9e8;
+  background: #d7e8f7;
+  content: "⌄";
+}
+
+.multiSelect[open] summary::after {
+  content: "⌃";
+}
+
+.disorderOptions {
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  right: 0;
+  left: 0;
+  display: grid;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid #8db9e8;
+  background: #fff;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 12%);
+}
+
+.disorderOptions label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.otherField {
+  --field-label-width: 185px;
+}
+
+@media (max-width: 700px) {
+  .form {
+    gap: 12px;
+  }
+
+  .section {
+    padding: 8px 10px 10px;
+  }
+
+  .section legend {
+    font-size: 18px;
+  }
+
+  .checkGrid,
+  .disordersGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .check {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .surgeryList {
+    max-width: none;
+  }
+
+  .surgeryField,
+  .disorderField,
+  .otherField {
+    --field-label-width: 155px;
+  }
+
+  .link {
+    right: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .surgeryField,
+  .disorderField,
+  .otherField {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .multiSelect {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}

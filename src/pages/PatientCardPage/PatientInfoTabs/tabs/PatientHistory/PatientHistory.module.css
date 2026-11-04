@@ -1,0 +1,166 @@
+.history {
+  display: grid;
+  gap: 18px;
+  color: #5b9bd5;
+  font-size: 1rem;
+}
+
+.section {
+  min-width: 0;
+  margin: 0;
+  padding: 10px 14px 12px;
+  border: 1px solid #a6c8ed;
+}
+
+.section legend {
+  padding: 0 5px;
+  color: #5b9bd5;
+  font-size: 1.1rem;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: minmax(130px, 18%) minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.label {
+  text-align: left;
+  color: #5b9bd5;
+  font-size: 1rem;
+}
+
+.value {
+  min-width: 0;
+  min-height: 26px;
+  padding: 4px 8px;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  background: #d6d6d6;
+  border:1px solid #5b9bd5;
+  color: #5b9bd5;
+  font-size: 1rem;
+}
+
+.numericValue {
+  width: 76px;
+  justify-self: start;
+}
+
+.multilineEntry {
+  margin-bottom: 10px;
+}
+
+.multiline {
+  min-height: 80px;
+  white-space: pre-wrap;
+}
+
+.multilineEntry:last-child {
+  margin-bottom: 0;
+}
+
+.familyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 8px 14px;
+
+}
+
+.familyGrid > :nth-child(1) {
+  grid-column: 1 / -1;
+}
+
+.familyGrid > :nth-child(2) {
+  grid-column: 1 / -1;
+}
+
+.checkEntry {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  gap: 10px;
+  min-width: 0;
+}
+.row{
+  display: flex;
+  
+}
+.checkEntry .label {
+  text-align: left;
+  font-size: 1rem;
+}
+
+.checkEntry input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: #5b9bd5;
+  flex: none;
+}
+
+.birthHistoryGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 8px 18px;
+}
+
+.birthHistoryGrid > :nth-child(1),
+.birthHistoryGrid > :nth-child(2) {
+  grid-column: 1 / -1;
+}
+
+.postnatalGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1.5fr;
+  align-items: center;
+  gap: 8px 14px;
+}
+
+.postnatalGrid > :nth-child(1) {
+  grid-column: 1;
+}
+
+.postnatalGrid > :nth-child(2) {
+  grid-column: 2;
+}
+
+.postnatalGrid > :nth-child(3) {
+  grid-column: 1;
+}
+
+.postnatalGrid > :nth-child(4) {
+  grid-column: 2;
+}
+
+.postnatalGrid > :nth-child(5) {
+  grid-column: 1 / 3;
+}
+
+@media (max-width: 600px) {
+  .entry {
+    grid-template-columns: minmax(90px, 32%) minmax(0, 1fr);
+  }
+
+  .familyGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .familyGrid > :nth-child(1),
+  .familyGrid > :nth-child(2) {
+    grid-column: 1 / -1;
+  }
+
+  .birthHistoryGrid,
+  .postnatalGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .birthHistoryGrid > *,
+  .postnatalGrid > * {
+    grid-column: 1 !important;
+  }
+}

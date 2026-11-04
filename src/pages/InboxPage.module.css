@@ -1,0 +1,27 @@
+
+.pageTitle {
+    color: #4a90d9;
+    margin: 20px 0;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.gridContainer {
+    width: 100%;
+    box-sizing: border-box;
+}
+.stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.divider {
+    position: relative;        /* anchors the handle */
+    flex: 0 0 8px;             /* the actual gap between the panels (same as your old 8px gap) */
+    background: transparent;
+    cursor: col-resize;
+    touch-action: none;
+    outline: none;
+    z-index: 1;                /* handle draws above the panel borders */
+}

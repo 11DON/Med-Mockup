@@ -1,0 +1,60 @@
+.guardianForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #5b9bd5;
+}
+
+.guardianGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 48px;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: #5b9bd5;
+}
+
+.removeButton {
+  grid-column: 1 / -1;
+  justify-self: end;
+}
+
+.removeButton,
+.addButton {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #5b9bd5;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: underline;
+}
+
+.addButton {
+  align-self: flex-start;
+}
+
+.removeButton:hover,
+.addButton:hover {
+  color: #3478b5;
+}
+
+@media (max-width: 900px) {
+  .guardianGrid {
+    column-gap: 24px;
+  }
+
+  .checkbox {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .guardianGrid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 16px;
+  }
+}

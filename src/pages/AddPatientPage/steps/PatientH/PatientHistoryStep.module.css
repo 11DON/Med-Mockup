@@ -1,0 +1,158 @@
+.historyForm {
+  --field-font-size: 15px;
+  --field-label-width: 155px;
+  --field-control-height: 27px;
+  --field-control-padding: 3px 8px;
+  --field-gap: 10px;
+  display: grid;
+  gap: 14px;
+  color: #5b9bd5;
+  font-size: 15px;
+}
+
+.section {
+  min-width: 0;
+  margin: 0;
+  padding: 8px 10px 10px;
+  border: 1px solid #8db9e8;
+}
+
+.section legend {
+  padding: 0 5px;
+  color: #5b9bd5;
+  font-size: 15px;
+}
+
+.baseSituation {
+  display: grid;
+  gap: 8px;
+}
+
+.historyField {
+  align-items: start;
+}
+
+.historyField textarea {
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 0;
+  min-height: 60px;
+  padding: 5px 7px;
+  resize: vertical;
+  border: 1px solid #8db9e8;
+  border-radius: 0;
+  color: #5b9bd5;
+  font: inherit;
+}
+
+.historyLabel {
+  flex-basis: 155px;
+}
+
+.familyGrid,
+.obstetricGrid,
+.postnatalGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 8px 16px;
+}
+
+.familyDisease {
+  grid-column: 1 / -1;
+}
+
+.compactField {
+  font-size: inherit;
+}
+
+.compactLabel {
+  flex-basis: 155px;
+}
+
+.compactField input,
+.compactField select,
+.otherConditions input {
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 0;
+  height: 27px;
+  padding: 3px 8px;
+  border: 1px solid #8db9e8;
+  border-radius: 0;
+  color: #5b9bd5;
+  font: inherit;
+}
+
+.checkField {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  min-width: 0;
+  color: #5b9bd5;
+  text-align: right;
+}
+
+.checkField input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: #5b9bd5;
+}
+
+.obstetricGrid > .historyField {
+  grid-column: 1 / -1;
+}
+
+.otherConditions {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 700px) {
+  .historyForm {
+    --field-label-width: 155px;
+    gap: 12px;
+  }
+
+  .section {
+    padding: 8px 10px 10px;
+  }
+
+  .section legend {
+    font-size: 15px;
+  }
+
+  .baseSituation {
+    gap: 8px;
+  }
+
+  .familyGrid,
+  .obstetricGrid,
+  .postnatalGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .familyDisease,
+  .obstetricGrid > .historyField,
+  .otherConditions {
+    grid-column: auto;
+  }
+
+  .checkField {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .historyField {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .historyLabel,
+  .compactLabel {
+    flex-basis: auto;
+    text-align: left;
+  }
+
+}

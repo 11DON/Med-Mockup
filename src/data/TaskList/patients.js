@@ -69,3 +69,7 @@ export const patients = [
     },
   },
 ];
+
+export function createPatient(form){
+  patients.push({id:Date.now(),...form});
+}

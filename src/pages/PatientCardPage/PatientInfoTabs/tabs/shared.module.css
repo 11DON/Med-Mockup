@@ -1,0 +1,16 @@
+.p {
+    color: #4a90d9;
+    display: flex;
+}
+
+.legend{
+    color: #4a90d9;
+    font-size: 2rem;
+}
+
+.field{
+    color: #4a90d9;
+    border: 1px solid;
+    border-color: #4a90d9;
+    
+}

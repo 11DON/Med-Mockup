@@ -1,0 +1,56 @@
+.field {
+  display: flex;
+  align-items: center;
+  gap: var(--field-gap, 10px);
+  min-width: 0;
+  font-size: var(--field-font-size, 15px);
+}
+
+.label {
+  flex: 0 0 var(--field-label-width, 27px);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.field input:not([type="checkbox"]),
+.field select {
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 0;
+  height: var(--field-control-height, 27px);
+  padding: var(--field-control-padding, 3px 8px);
+  border: 1px solid #8db9e8;
+  border-radius: 0;
+  background-color: #fff;
+  color: #5b9bd5;
+  font: inherit;
+}
+
+.field input:disabled {
+  background-color: #d9d9d9;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+@media (max-width: 900px) {
+  .field {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .label {
+    flex-basis: auto;
+    text-align: left;
+  }
+
+  .rtl {
+    align-items: flex-end;
+  }
+
+  .rtl .label {
+    text-align: right;
+  }
+}

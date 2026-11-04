@@ -1,0 +1,28 @@
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 4px;
+    margin: 14px 0 0 8px;
+}
+
+.tab {
+    padding: 1px 6px;
+    border: 1px solid #4a90d9;
+    border-bottom: 0;
+    background: #3184c5;
+    color: #fff;
+    font: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.tab[aria-selected="true"] {
+    background: #fff;
+    color: #000;
+}
+
+.tab:focus-visible {
+    outline: 2px solid #1f4e8c;
+    outline-offset: 2px;
+}

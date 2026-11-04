@@ -1,0 +1,65 @@
+.wrapper {
+  display: inline-block;
+  padding: 24px;
+  font-family: Calibri, Arial, sans-serif;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 40px 110px 170px 170px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.header {
+  color: #7a6a60;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.day {
+  color: #5b9bd5;
+  font-size: 16px;
+}
+
+.group {
+  display: flex;
+  gap: 12px;
+}
+
+/* time box */
+.box {
+  width: 52px; /* wide enough for the spinner arrows */
+  height: 26px;
+  padding: 0 4px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 16px;
+  color: #5b9bd5;
+  background: #fff;
+  border: 1.5px solid #5b9bd5;
+}
+
+.box:disabled {
+  background: #d9d9d9;
+  border-color: #bfbfbf;
+  cursor: not-allowed;
+}
+
+/* Patient Card (readOnly): hide the arrows */
+.box[readonly]::-webkit-inner-spin-button {
+  display: none;
+}
+.box[readonly] {
+  -moz-appearance: textfield;
+}
+
+.check {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.check:disabled {
+  cursor: default;
+}
