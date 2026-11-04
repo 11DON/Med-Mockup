@@ -24,7 +24,7 @@
 
 .item {
   position: relative;
-  width: 100px;
+   width: 100px;
   height: 230px;
   text-align: center;
 }
@@ -35,13 +35,13 @@
   left: 0;
   right: 0;
 }
-.up .label   { bottom: calc(60% + 30px); }
-.down .label { top: calc(60% + 30px); }
+.up .label   { bottom: calc(60% + 45px); }
+.down .label { top: calc(60% + 45px); }
 
 .stem {
   position: absolute;
   left: 50%;
-  width: 1px;
+    width: 1px;
   height: 50px;
   background: #9bb7d4;
 }
@@ -70,3 +70,69 @@
 .onboarding .title { color: #c00000; }
 
 .assessment .marker { color: #2e75b6; }
+
+@media (max-width: 800px) {
+  .scroll {
+    padding: 18px;
+  }
+
+  .item {
+    width: 120px;
+    height: 280px;
+  }
+
+  .up .label { bottom: calc(60% + 30px); }
+  .down .label { top: calc(60% + 30px); }
+
+  .marker {
+    font-size: 22px;
+  }
+
+  .date,
+  .title {
+    font-size: 16px;
+  }
+
+  .sub {
+    font-size: 15px;
+  }
+
+  .stem {
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll {
+    padding: 12px;
+  }
+
+  .item {
+    width: 100px;
+    height: 240px;
+  }
+
+  .timeline::before {
+    height: 18px;
+  }
+
+  .up .label { bottom: calc(60% + 24px); }
+  .down .label { top: calc(60% + 24px); }
+
+  .stem {
+    height: 48px;
+  }
+
+  .marker {
+    font-size: 18px;
+  }
+
+  .date,
+  .title {
+    font-size: 13px;
+  }
+
+  .sub {
+    font-size: 12px;
+  }
+}

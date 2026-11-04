@@ -1,19 +1,20 @@
 .guardianForm {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
   color: #5b9bd5;
+  font-size: 22.5px;
 }
 
 .guardianGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px 48px;
+  gap: 30px 72px;
 }
 
 .checkbox {
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   accent-color: #5b9bd5;
 }
 
@@ -42,9 +43,9 @@
   color: #3478b5;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1350px) {
   .guardianGrid {
-    column-gap: 24px;
+    column-gap: 36px;
   }
 
   .checkbox {
@@ -52,9 +53,9 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .guardianGrid {
     grid-template-columns: minmax(0, 1fr);
-    row-gap: 16px;
+    row-gap: 24px;
   }
 }

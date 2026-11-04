@@ -1,13 +1,13 @@
 .field {
   display: flex;
   align-items: center;
-  gap: var(--field-gap, 10px);
+  gap: var(--field-gap, 15px);
   min-width: 0;
-  font-size: var(--field-font-size, 15px);
+  font-size: var(--field-font-size, 22.5px);
 }
 
 .label {
-  flex: 0 0 var(--field-label-width, 27px);
+  flex: 0 0 var(--field-label-width, 40.5px);
   text-align: right;
   white-space: nowrap;
 }
@@ -17,9 +17,9 @@
   box-sizing: border-box;
   flex: 1;
   min-width: 0;
-  height: var(--field-control-height, 27px);
-  padding: var(--field-control-padding, 3px 8px);
-  border: 1px solid #8db9e8;
+  height: var(--field-control-height, 40.5px);
+  padding: var(--field-control-padding, 4.5px 12px);
+  border: 1.5px solid #8db9e8;
   border-radius: 0;
   background-color: #fff;
   color: #5b9bd5;
@@ -34,11 +34,11 @@
   direction: rtl;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1350px) {
   .field {
     align-items: flex-start;
     flex-direction: column;
-    gap: 5px;
+    gap: 7.5px;
   }
 
   .label {

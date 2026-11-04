@@ -1,28 +1,92 @@
+.page {
+  box-sizing: border-box;
+  height: calc(100vh - 240px);
+  padding: 24px;
+  color: #5b9bd5;
+  font-family: Calibri, Arial, sans-serif;
+  max-height: calc(100vh - 240px);
+  min-height: 0;
+  overflow-y: auto;
+}
+.page :global(fieldset){
+  min-width: 0;
+    margin: 0;
+    padding: 8px 12px 10px;
+    border: 1px solid #a6c8ed;
+}
+.title {
+  padding: 12px 16px;
+  background: #f2f2f2;
+  font-style: italic;
+}
+
 .tabs {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: end;
-    gap: 4px;
-    margin: 14px 0 0 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 4px;
+  margin: 14px 0 0 8px;
 }
 
 .tab {
-    padding: 1px 6px;
-    border: 1px solid #4a90d9;
-    border-bottom: 0;
-    background: #3184c5;
-    color: #fff;
-    font: inherit;
-    font-size: 1rem;
-    cursor: pointer;
+  padding: 1px 6px;
+  border: 1px solid #4a90d9;
+  border-bottom: 0;
+  background: #3184c5;
+  color: #fff;
+  font: inherit;
+  font-size: 1.3rem;
+  cursor: pointer;
 }
 
 .tab[aria-selected="true"] {
-    background: #fff;
-    color: #000;
+  background: #fff;
+  color: #000;
 }
 
 .tab:focus-visible {
-    outline: 2px solid #1f4e8c;
-    outline-offset: 2px;
+  outline: 2px solid #1f4e8c;
+  outline-offset: 2px;
+}
+
+.box {
+  padding: 24px;
+  border: 1px solid #5b9bd5;
+}
+
+.box legend {
+  padding: 0 8px;
+  font-size: 30px;
+}
+
+.error {
+  color: #c0392b;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.buttons button {
+  padding: 6px 20px;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.buttons button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.cancel {
+  background: #d62b2b;
+}
+
+.finish {
+  background: #5aa63c;
 }

@@ -1,59 +1,60 @@
 .history {
+   container-type: inline-size;
   display: grid;
-  gap: 18px;
+  gap: 27px;
   color: #5b9bd5;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .section {
   min-width: 0;
   margin: 0;
-  padding: 10px 14px 12px;
-  border: 1px solid #a6c8ed;
+  padding: 15px 21px 18px;
+  border: 1.5px solid #a6c8ed;
 }
 
 .section legend {
-  padding: 0 5px;
+  padding: 0 7.5px;
   color: #5b9bd5;
-  font-size: 1.1rem;
+  font-size: 1.65rem;
 }
 
 .entry {
   display: grid;
-  grid-template-columns: minmax(130px, 18%) minmax(0, 1fr);
+  grid-template-columns: minmax(195px, 18%) minmax(0, 1fr);
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   min-width: 0;
 }
 .label {
   text-align: left;
   color: #5b9bd5;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .value {
   min-width: 0;
-  min-height: 26px;
-  padding: 4px 8px;
+  min-height: 39px;
+  padding: 6px 12px;
   box-sizing: border-box;
   overflow-wrap: anywhere;
   background: #d6d6d6;
-  border:1px solid #5b9bd5;
+  border:1.5px solid #5b9bd5;
   color: #5b9bd5;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .numericValue {
-  width: 76px;
+  width: 114px;
   justify-self: start;
 }
 
 .multilineEntry {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .multiline {
-  min-height: 80px;
+  min-height: 120px;
   white-space: pre-wrap;
 }
 
@@ -65,7 +66,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: center;
-  gap: 8px 14px;
+  gap: 12px 21px;
 
 }
 
@@ -81,7 +82,7 @@
   display: flex;
   align-items: left;
   justify-content: left;
-  gap: 10px;
+  gap: 15px;
   min-width: 0;
 }
 .row{
@@ -90,12 +91,12 @@
 }
 .checkEntry .label {
   text-align: left;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .checkEntry input {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   margin: 0;
   accent-color: #5b9bd5;
   flex: none;
@@ -105,7 +106,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 8px 18px;
+  gap: 12px 27px;
 }
 
 .birthHistoryGrid > :nth-child(1),
@@ -117,7 +118,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1.5fr;
   align-items: center;
-  gap: 8px 14px;
+  gap: 12px 21px;
 }
 
 .postnatalGrid > :nth-child(1) {
@@ -139,28 +140,65 @@
 .postnatalGrid > :nth-child(5) {
   grid-column: 1 / 3;
 }
-
+/* .history can't restyle itself from its own container query, so only its gap uses a media query */
 @media (max-width: 600px) {
-  .entry {
-    grid-template-columns: minmax(90px, 32%) minmax(0, 1fr);
+  .history {
+    gap: 18px;
   }
+}
 
-  .familyGrid {
-    grid-template-columns: 1fr 1fr;
+/* mid-size: three-column grids drop to two */
+@container (max-width: 1100px) {
+  .familyGrid,
+  .postnatalGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
 
-  .familyGrid > :nth-child(1),
-  .familyGrid > :nth-child(2) {
-    grid-column: 1 / -1;
-  }
-
+/* narrow: one column everywhere */
+@container (max-width: 800px) {
+  .familyGrid,
   .birthHistoryGrid,
   .postnatalGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
+  /* !important is needed because the nth-child placements are more specific; without it, "grid-column: 2" would create a second column */
+  .familyGrid > *,
   .birthHistoryGrid > *,
   .postnatalGrid > * {
     grid-column: 1 !important;
+  }
+}
+
+/* phone: label above value, smaller type (your old 600px rules) */
+@container (max-width: 600px) {
+  .section {
+    padding: 10px 12px 12px;
+  }
+
+  .entry {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .label,
+  .value,
+  .checkEntry .label {
+    font-size: 1.2rem;
+  }
+
+  .value {
+    min-height: 32px;
+    padding: 4px 8px;
+  }
+
+  .multiline {
+    min-height: 90px;
+  }
+
+  .checkEntry input {
+    width: 24px;
+    height: 24px;
   }
 }

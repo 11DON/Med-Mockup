@@ -8,14 +8,15 @@ function updateGroup(value, onChange, group, name, nextValue) {
   });
 }
 
-function TextAreaField({ label, value, onChange, className = "" }) {
+function TextAreaField({ label, value, onChange, className = "", placeholder = "" }) {
   return (
     <Field
       label={label}
       className={`${styles.historyField} ${className}`}
       labelClassName={styles.historyLabel}
+
     >
-      <textarea value={value ?? ""} onChange={(event) => onChange(event.target.value)} />
+      <textarea value={value ?? ""} onChange={(event) => onChange(event.target.value)} placeholder={placeholder} />
     </Field>
   );
 }
@@ -28,7 +29,7 @@ function NumberField({ label, value, onChange }) {
         min="0"
         value={value ?? ""}
         onChange={(event) => onChange(event.target.value)}
-        
+
       />
     </Field>
   );
@@ -60,16 +61,21 @@ export default function PatientHistoryStep({ value, onChange }) {
           label="Reason of referral:"
           value={baseSituation.reasonOfReferral}
           onChange={set("baseSituation")("reasonOfReferral")}
+          placeholder={"<Free multi-line Text>\n<Line 2>\n<Line 3>\n<Line 4>"}
         />
         <TextAreaField
           label="Chief Complaint:"
           value={baseSituation.chiefComplaint}
           onChange={set("baseSituation")("chiefComplaint")}
+          placeholder={"<Free multi-line Text>\n<Line 2>\n<Line 3>\n<Line 4>"}
+
         />
         <TextAreaField
           label="History:"
           value={baseSituation.history}
           onChange={set("baseSituation")("history")}
+          placeholder={"<Free multi-line Text>\n<Line 2>\n<Line 3>\n<Line 4>"}
+
         />
       </fieldset>
 
@@ -86,6 +92,8 @@ export default function PatientHistoryStep({ value, onChange }) {
             value={familyHistory.heredofamilialDisease}
             onChange={set("familyHistory")("heredofamilialDisease")}
             className={styles.familyDisease}
+            placeholder={"<Free multi-line Text>\n<Line 2>"}
+
           />
           <NumberField
             label="Number of siblings:"
@@ -112,12 +120,13 @@ export default function PatientHistoryStep({ value, onChange }) {
             label="Prenatal:"
             value={obstetric.prenatal}
             onChange={set("obstetric")("prenatal")}
+            placeholder={"<Free multi-line Text>\n<Line 2>"}
           />
           <TextAreaField
             label="Perinatal:"
             value={obstetric.perinatal}
             onChange={set("obstetric")("perinatal")}
-          />
+            placeholder={"<Free multi-line Text>\n<Line 2>"} />
           <CheckField
             label="Type of Labor (Is Cesarean):"
             checked={obstetric.isCesarean}

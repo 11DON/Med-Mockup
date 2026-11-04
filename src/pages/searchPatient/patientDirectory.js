@@ -1,4 +1,4 @@
-import { patients as tasks } from "../../data/TaskList/patients.js";
+import { patients as tasks } from "../../data/patients.js";
 import { patientDetails } from "../../data/patientDetails.js";
 
 function buildDirectory(taskList){

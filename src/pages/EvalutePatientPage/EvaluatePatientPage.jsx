@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { STEPS, validators, StepContent } from "../AddPatientPage/steps/PatientSteps.jsx"
-import { createPatient } from "../../data/TaskList/patients.js";
-import { div } from "motion/react-client";
-import styles from "../AddPatientPage/AddPatientPage.module.css";
+import { createPatient } from "../../data/patients.js";
+import styles from "./Evaluate.module.css";
 import PatientCard from "../../components/PatientCard/PatientCard.jsx"
 
 export default function EvalutePatientPage({ form, set, onCancel, onFinish }) {
@@ -37,14 +36,28 @@ export default function EvalutePatientPage({ form, set, onCancel, onFinish }) {
             <div>
                 <PatientCard patient={{ ...form.main, birthDate: form.main.birthDate }} />
             </div>
-            <div className={styles.tabs}>
+            <div className={styles.tabs} role="tablist" aria-label="Patient evaluation steps">
                 {STEPS.map((name, i) => (
-                    <button key={name} onClick={() => setTab(i)} className={styles.tab} >
+                    <button
+                        key={name}
+                        id={`evaluation-tab-${i}`}
+                        type="button"
+                        role="tab"
+                        aria-selected={tab === i}
+                        aria-controls="evaluation-tab-panel"
+                        onClick={() => setTab(i)}
+                        className={styles.tab}
+                    >
                         {name}
                     </button>
                 ))}
             </div>
-            <fieldset className={styles.box}>
+            <fieldset
+                id="evaluation-tab-panel"
+                className={styles.box}
+                role="tabpanel"
+                aria-labelledby={`evaluation-tab-${tab}`}
+            >
                 <StepContent index={tab} form={form} set={set} />
                 {error && <p className={styles.error}>{error}</p>}
                 <div className={styles.buttons}>

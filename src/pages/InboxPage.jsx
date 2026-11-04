@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Group, Panel, Separator } from "react-resizable-panels";
-import { patients } from "../data/TaskList/patients.js";
+import { patients } from "../data/patients.js";
 import { taskTypes } from "../data/taskTypes.js";
 import { useIsMobile } from "../pages/hooks/useIsMobile.js";
 import TaskList from "../components/TaskCard/TaskList.jsx";

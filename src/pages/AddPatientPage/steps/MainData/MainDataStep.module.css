@@ -1,32 +1,32 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 45px;
   color: #5b9bd5;
 }
 .form {
-  --field-label-width: 150px; /* wide enough for "National/Passport ID" */
+  --field-label-width: 225px; /* wide enough for "National/Passport ID" */
 }
 .identityGrid,
 .addressGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 48px;
+  column-gap: 72px;
 }
 
 .identityGrid {
-  row-gap: 20px;
+  row-gap: 30px;
 }
 
 .addressGrid {
-  row-gap: 18px;
+  row-gap: 27px;
 }
 
 .sectionTitle {
   align-self: center;
   justify-self: start;
   margin: 0;
-  font-size: 19px;
+  font-size: 28.5px;
   text-decoration: underline;
 }
 
@@ -34,19 +34,19 @@
   grid-column: 2;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1350px) {
   .identityGrid,
   .addressGrid {
-    column-gap: 24px;
+    column-gap: 36px;
   }
 
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .identityGrid,
   .addressGrid {
     grid-template-columns: minmax(0, 1fr);
-    row-gap: 16px;
+    row-gap: 24px;
   }
 
   .onboardingField {

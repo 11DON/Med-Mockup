@@ -5,12 +5,18 @@
 
 .legend{
     color: #4a90d9;
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .field{
     color: #4a90d9;
-    border: 1px solid;
+    border: 1.5px solid;
     border-color: #4a90d9;
     
+}
+
+@media (max-width: 560px) {
+    .legend {
+        font-size: 2rem;
+    }
 }

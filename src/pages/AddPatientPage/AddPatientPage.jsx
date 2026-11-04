@@ -1,7 +1,6 @@
 import styles from "../AddPatientPage/AddPatientPage.module.css"
 import { emptyGuardian } from "./steps/Guardians/GuardiansStep.jsx";
 import { useState } from "react";
-import { createPatient } from "../../data/TaskList/patients.js"
 import { STEPS, validators, StepContent } from "./steps/PatientSteps.jsx";
 import EvalutePatientPage from "../EvalutePatientPage/EvaluatePatientPage.jsx";
 
