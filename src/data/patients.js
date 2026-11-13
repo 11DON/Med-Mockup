@@ -15,6 +15,7 @@ export const patients = [
       gender: "Female",
       avatar: "female.jpeg"
     },
+    type:"evaluate"
   },
   {
     id: 2,
@@ -32,6 +33,7 @@ export const patients = [
       gender: "Male",
       avatar: "male.jpeg"
     },
+    type:"assess"
   },
   {
     id: 3,
@@ -49,6 +51,8 @@ export const patients = [
       gender: "Male",
       avatar: "male.jpeg"
     },
+    
+    type:"assess"
   },
   {
     id: 4,
@@ -67,6 +71,7 @@ export const patients = [
       avatar: "male.jpeg"
 
     },
+    type:"manage"
   },
 ];
 

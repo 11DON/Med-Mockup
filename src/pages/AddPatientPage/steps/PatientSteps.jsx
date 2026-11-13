@@ -4,7 +4,9 @@ import PatientHistoryStep from "../steps/PatientH/PatientHistoryStep.jsx";
 import MedicalHistoryStep from "../steps/MedicalH/MedicalHistoryStep.jsx";
 import IepSchedule from "../../PatientCardPage/PatientInfoTabs/tabs/Iep/IepScheduleTab.jsx";
 import { validateSchedule } from "../formUtils.js";
-
+import EvaluateTab from "../../EvalutePatientPage/taps/EvaluateTab.jsx";
+import AssessmentTab from "../../EvalutePatientPage/taps/AssessmentTab.jsx";
+import ManageTasksTab from "../../EvalutePatientPage/taps/ManageTasksTab.jsx"
 export const STEPS = [
     "Main Data",
     "Guardians",
@@ -34,3 +36,9 @@ export function StepContent({ index, form, set }) {
         <IepSchedule value={form.iep} onChange={set("iep")} />
     ][index];
 }
+
+export const EXTRA_TABS = {
+    evaluate: { label: "Evaluate", render: (form) => <EvaluateTab patient={form.main} /> },
+    assess: { label: "Assessment", render: () => <AssessmentTab /> },
+    tasks: { label: "Manage Tasks", render: () => <ManageTasksTab /> },
+};

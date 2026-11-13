@@ -30,7 +30,11 @@
   column-gap: 42px;
   row-gap: 10.5px;
 }
-
+.checkGrid.labsGrid {
+  grid-template-columns: repeat(2, max-content);
+  justify-content: center;
+  column-gap: 80px;
+}
 .check {
   display: flex;
   align-items: center;
@@ -111,8 +115,9 @@
 }
 
 .disordersGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
   gap: 21px 42px;
 }
 
@@ -235,5 +240,47 @@
   .multiSelect {
     box-sizing: border-box;
     width: 100%;
+  }
+}
+/* Labs & Investigations: different screen sizes */
+@media (max-width: 1350px) {
+  .checkGrid.labsGrid {
+    column-gap: 48px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .checkGrid.labsGrid {
+    grid-template-columns: max-content;   /* one column */
+  }
+}
+
+@media (max-width: 720px) {
+  .checkGrid.labsGrid {
+    grid-template-columns: minmax(0, 1fr); /* full width, long labels wrap */
+  }
+}
+@media (max-width: 720px) {
+  .checkGrid.labsGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .labsGrid .check {
+    justify-content: space-between; /* label on the left, checkbox on the far right */
+    text-align: left;
+    gap: 24px;                      /* minimum space if a long label wraps */
+  }
+}
+
+@media (max-width: 720px) {
+  .conditionsSection .check,
+  .labsGrid .check {
+    justify-content: space-between; /* label on the left, checkbox on the far right */
+    text-align: left;
+    gap: 24px;
+  }
+
+  .checkGrid.labsGrid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

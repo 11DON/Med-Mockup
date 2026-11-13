@@ -1,14 +1,15 @@
 import Field from "../../Field";
 import styles from "./PatientHistoryStep.module.css";
 
-function updateGroup(value, onChange, group, name, nextValue) {
+
+export function updateGroup(value, onChange, group, name, nextValue) {
   onChange({
     ...value,
     [group]: { ...value[group], [name]: nextValue },
   });
 }
 
-function TextAreaField({ label, value, onChange, className = "", placeholder = "" }) {
+export function TextAreaField({ label, value, onChange, className = "", placeholder = "" }) {
   return (
     <Field
       label={label}
@@ -21,9 +22,10 @@ function TextAreaField({ label, value, onChange, className = "", placeholder = "
   );
 }
 
-function NumberField({ label, value, onChange }) {
+export function NumberField({ label, value, onChange }) {
   return (
-    <Field label={label} className={styles.compactField} labelClassName={styles.compactLabel}>
+    <Field label={label} className={`${styles.compactField} ${styles.numberField}`}
+      labelClassName={styles.compactLabel}>
       <input
         type="number"
         min="0"
@@ -35,7 +37,7 @@ function NumberField({ label, value, onChange }) {
   );
 }
 
-function CheckField({ label, checked, onChange }) {
+export function CheckField({ label, checked, onChange }) {
   return (
     <label className={styles.checkField}>
       <span>{label}</span>

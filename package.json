@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "dompurify": "^3.4.17",
     "motion": "^14.7.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
+    "react-quill-new": "^3.8.3",
     "react-resizable-panels": "^4.15.0",
     "react-router": "^8.5.1",
     "react-router-dom": "^7.18.5"

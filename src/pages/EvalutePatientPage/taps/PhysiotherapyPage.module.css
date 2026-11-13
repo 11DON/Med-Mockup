@@ -1,0 +1,262 @@
+.page {
+  zoom: 1.75;
+  display: grid;
+  gap: 14px;
+  color: #3879ad;
+  font-size: 13px;
+}
+
+.pageHeading,
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pageHeading h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.backButton,
+.addButton {
+  border: 0;
+  background: transparent;
+  color: #dc9900;
+  font: inherit;
+  cursor: pointer;
+}
+
+.backButton {
+  color: #3879ad;
+  text-decoration: underline;
+}
+
+.section {
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid #85b8e4;
+  background: #fff;
+}
+
+.sectionHeader {
+  margin-bottom: 6px;
+}
+
+.sectionHeader h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.addButton {
+  white-space: nowrap;
+}
+
+.addButton span {
+  font-size: 20px;
+  font-weight: 700;
+  vertical-align: -1px;
+}
+
+.scaleGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.scaleCard {
+  position: relative;
+  min-height: 76px;
+  padding: 6px;
+  border: 1px solid #b1d1ec;
+  color: #5a9c46;
+  font-size: 11px;
+}
+
+.scaleCard h3,
+.observation h3,
+.goalDetail h3,
+.exerciseLayout h3 {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.scaleCard strong {
+  color: #e09800;
+  font-weight: 400;
+}
+
+.scaleCard p {
+  margin: 4px 16px 0 0;
+  color: #667987;
+}
+
+.settings {
+  position: absolute;
+  right: 4px;
+  bottom: 3px;
+  border: 0;
+  background: transparent;
+  color: #5b9bd5;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.observationList {
+  display: grid;
+  gap: 6px;
+}
+
+.observation {
+  min-height: 55px;
+  padding: 5px 7px;
+  border: 1px solid #b1d1ec;
+  color: #5a9c46;
+}
+
+.observation ul,
+.goalTree ul,
+.goalDetail ul,
+.exerciseLayout ul {
+  margin: 3px 0 0;
+  padding-left: 18px;
+}
+
+.observation li {
+  color: #667987;
+  font-size: 10px;
+}
+
+.summary p,
+.plan dl,
+.goalDetail,
+.exerciseDetail {
+  margin: 0;
+  color: #667987;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.plan dl > div {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 4px;
+  margin: 2px 0;
+}
+
+.plan dt {
+  flex: 0 0 auto;
+  color: #3879ad;
+  font-weight: 700;
+}
+
+.plan dd {
+  margin: 0;
+}
+
+.plan dd :global(.ql-editor) {
+  min-height: 0;
+  padding: 0;
+}
+
+.plan dd :global(.ql-editor p) {
+  margin: 0;
+}
+
+.goalsLayout,
+.exerciseLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 8px;
+}
+
+.goalTree,
+.goalDetail,
+.exerciseTree,
+.exerciseDetail {
+  min-width: 0;
+  padding: 6px;
+  border: 1px solid #b1d1ec;
+}
+
+.goalTree {
+  color: #5a9c46;
+}
+
+.goalGroup + .goalGroup {
+  margin-top: 5px;
+}
+
+.goal {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #367eae;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.activeGoal {
+  font-weight: 700;
+}
+
+.goalTree li,
+.goalDetail li,
+.exerciseTree li {
+  color: #667987;
+  font-size: 10px;
+}
+
+.activity {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.activity:hover {
+  text-decoration: underline;
+}
+
+.goalDetail h3 {
+  color: #3879ad;
+}
+
+.exerciseTree h3 {
+  color: #367eae;
+}
+
+.exerciseTree ul + h3 {
+  margin-top: 6px;
+}
+
+.exerciseDetail p {
+  margin: 3px 0;
+}
+
+.page button:focus-visible {
+  outline: 2px solid #1f4e8c;
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .scaleGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .goalsLayout,
+  .exerciseLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+  }
+}

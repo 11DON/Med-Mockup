@@ -9,8 +9,12 @@
 .guardianGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+       --field-label-width: 230px;
   gap: 30px 72px;
 }
+ .guardianGrid label span {
+     text-align: left;
+   }
 
 .checkbox {
   width: 24px;
@@ -31,18 +35,25 @@
   color: #5b9bd5;
   cursor: pointer;
   font: inherit;
-  text-decoration: underline;
 }
 
 .addButton {
-  align-self: flex-start;
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .removeButton:hover,
 .addButton:hover {
   color: #3478b5;
 }
-
+.add{
+  align-self: flex-end;
+  font-size: 2.3rem;
+  font-weight: bold;
+  padding-right: 3px;
+}
 @media (max-width: 1350px) {
   .guardianGrid {
     column-gap: 36px;

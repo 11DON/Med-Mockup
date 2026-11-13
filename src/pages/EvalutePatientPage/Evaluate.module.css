@@ -1,19 +1,21 @@
 .page {
   box-sizing: border-box;
-  height: calc(100vh - 240px);
+
   padding: 24px;
   color: #5b9bd5;
   font-family: Calibri, Arial, sans-serif;
-  max-height: calc(100vh - 240px);
+
   min-height: 0;
   overflow-y: auto;
 }
-.page :global(fieldset){
+
+.page :global(fieldset) {
   min-width: 0;
-    margin: 0;
-    padding: 8px 12px 10px;
-    border: 1px solid #a6c8ed;
+  margin: 0;
+  padding: 8px 12px 10px;
+  border: 1px solid #a6c8ed;
 }
+
 .title {
   padding: 12px 16px;
   background: #f2f2f2;
@@ -66,16 +68,22 @@
 .buttons {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
-  margin-top: 24px;
+  gap: 16px;
+  margin: 16px 12px 0 0;
+  zoom: 1.5;
 }
 
 .buttons button {
-  padding: 6px 20px;
-  border: 0;
+  min-width: 82px;
+  padding: 4px 18px;
+  border: 1px solid transparent;
+  border-radius: 3px;
   color: #fff;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.2;
   cursor: pointer;
-  font-size: 15px;
+  box-shadow: inset 0 1px 2px #ffffffa6, 0 1px 2px #777;
 }
 
 .buttons button:disabled {
@@ -84,9 +92,9 @@
 }
 
 .cancel {
-  background: #d62b2b;
+  background: linear-gradient(#c58cde, #8534aa);
 }
 
 .finish {
-  background: #5aa63c;
+  background: linear-gradient(#a6d3f0, #5597cf);
 }

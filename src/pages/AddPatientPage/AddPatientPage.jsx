@@ -6,7 +6,7 @@ import EvalutePatientPage from "../EvalutePatientPage/EvaluatePatientPage.jsx";
 
 // The Steps in the wizard
 // Empty form to start the wizard with
-const initialForm = {
+export const initialForm = {
   main: {
     nameEn: "", nameAr: "", nationality: "Egypt", nationalId: "",
     birthdate: "", gender: "", country: "Egypt", governorate: "",

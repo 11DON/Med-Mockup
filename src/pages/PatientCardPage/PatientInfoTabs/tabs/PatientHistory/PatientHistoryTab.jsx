@@ -1,19 +1,6 @@
 import styles from "./PatientHistory.module.css";
 import { getPatientHistory } from "../../../../../data/patientHistory.js";
-import { CheckEntry } from "../shared.jsx";
-function TextEntry({ label, value, multiline = false }) {
-  const isNumeric = typeof value === "number";
-
-  return (
-    <div className={`${styles.entry} ${multiline ? styles.multilineEntry : ""}`}>
-      <span className={styles.label}>{label}</span>
-      <div className={`${styles.value} ${multiline ? styles.multiline : ""} ${isNumeric ? styles.numericValue : ""}`}>
-        {value ?? "-"}
-      </div>
-    </div>
-  );
-}
-
+import { CheckEntry,TextEntry } from "../shared.jsx";
 
 
 export default function PatientHistoryTab({ patient }) {

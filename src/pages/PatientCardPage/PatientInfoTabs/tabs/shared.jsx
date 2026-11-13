@@ -15,7 +15,7 @@ export function Section({ title, children }) {
 export function Field({ label, value }) {
     return (
         <p className={styles.p}>
-            <strong>{label}:</strong> {value === "" || value == null ? "-" : value}
+            {label} : {value === "" || value == null ? "-" : value}
         </p>
     )
 }
@@ -36,3 +36,17 @@ export function CheckEntry({ label, checked, className = "", labelClassName = ""
     </label>
   );
 }
+
+export function TextEntry({ label, value, multiline = false }) {
+  const isNumeric = typeof value === "number";
+
+  return (
+    <div className={`${styles.entry} ${multiline ? styles.multilineEntry : ""}`}>
+      <span className={styles.label}>{label}</span>
+      <div className={`${styles.value} ${multiline ? styles.multiline : ""} ${isNumeric ? styles.numericValue : ""}`}>
+        {value ?? "-"}
+      </div>
+    </div>
+  );
+}
+

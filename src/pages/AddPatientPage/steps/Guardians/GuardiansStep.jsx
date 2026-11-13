@@ -3,8 +3,14 @@ import Field from "../../Field"
 
 
 export const emptyGuardian = {
-  nameEn: "", nameAr: "", nationality: "Egypt", nationalId: "",
-  birthdate: "", relationship: "", phone: "", canAccess: false,
+  nameEn: "",
+  nameAr: "",
+  nationality: "Egypt",
+  nationalId: "",
+  birthdate: "", 
+  relationship: "",
+  phone: "",
+  canAccess: false,
 };
 
 export default function GuardiansStep({ value, onChange }) {
@@ -75,7 +81,7 @@ export default function GuardiansStep({ value, onChange }) {
       ))}
 
       <button type="button" className={styles.addButton} onClick={add}>
-        + Add Another Guardian
+        <span className={styles.add}>+</span> Add Another Guardian
       </button>
     </div>
   );

@@ -118,7 +118,7 @@ export default function MedicalHistoryStep({ value, onChange }) {
 
       <fieldset className={`${styles.section} ${styles.labsSection}`}>
         <legend>Labs &amp; Investigations</legend>
-        <CheckGroup items={LABS} checked={value.labs} onToggle={toggle("labs")} />
+        <CheckGroup items={LABS} checked={value.labs} onToggle={toggle("labs")} className={styles.labsGrid} />
       </fieldset>
     </div>
   );

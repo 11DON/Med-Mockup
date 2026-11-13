@@ -4,6 +4,7 @@
   --field-control-height: 40.5px;
   --field-control-padding: 4.5px 12px;
   --field-gap: 15px;
+  
   display: grid;
   gap: 21px;
   color: #5b9bd5;
@@ -46,7 +47,7 @@
 }
 
 .historyLabel {
-  flex-basis: 232.5px;
+  flex-basis: 232px;
 }
 
 .familyGrid,
@@ -55,8 +56,10 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: center;
-  gap: 12px 24px;
+  gap: 12px;
 }
+
+
 
 .familyDisease {
   grid-column: 1 / -1;
@@ -76,6 +79,7 @@
   box-sizing: border-box;
   flex: 1;
   min-width: 0;
+  max-width: 300px;
   height: 40.5px;
   padding: 4.5px 12px;
   border: 1.5px solid #8db9e8;
@@ -83,15 +87,22 @@
   color: #5b9bd5;
   font: inherit;
 }
+.numberField input {
+  max-width: 90px;
+}
 
 .checkField {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
+  gap: var(--field-gap, 15px);
   min-width: 0;
   color: #5b9bd5;
+}
+
+.checkField span {
+  flex: 0 0 var(--field-label-width, 23.5px);
   text-align: right;
+
 }
 
 .checkField input {

@@ -13,18 +13,26 @@ export default function InboxPage() {
   const selected = patients.find((p) => p.id === selectedId);
   const isMobile = useIsMobile();
   const navigate = useNavigate();
-
   const taskType = taskTypes[selected?.type];
   const handleDetails = taskType
     ? () => navigate(taskType.path(selected))
     : undefined;
 
+const handleSelect = (id) => {
+  const task = patients.find((p) => p.id === id);
+  const type = taskTypes[task?.type];
+  console.log("type value:", task?.type, "| config:", type, "| openOnSelect:", type?.openOnSelect);
+  if (type?.openOnSelect) navigate(type.path(task));
+  else setSelectedId(id);
+};
+
   const taskList = (
-    <TaskList tasks={patients} selectedId={selectedId} onSelect={setSelectedId} />
+    <TaskList tasks={patients} selectedId={selectedId} onSelect={handleSelect} />  // CHANGED
   );
   const details = (
     <DetailsPanel patient={selected?.patient} onDetails={handleDetails} />
   );
+
 
   return (
     <>

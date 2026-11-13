@@ -37,7 +37,7 @@
   overflow-wrap: anywhere;
 }
 .info{
-  padding-left: 16.5rem;
+  /* padding-left: 16.5rem; */
 }
 .access {
   display: flex;

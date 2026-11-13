@@ -38,7 +38,6 @@
   padding: 6px 12px;
   box-sizing: border-box;
   overflow-wrap: anywhere;
-  background: #d6d6d6;
   border:1.5px solid #5b9bd5;
   color: #5b9bd5;
   font-size: 1.5rem;
@@ -91,7 +90,7 @@
 }
 .checkEntry .label {
   text-align: left;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .checkEntry input {
