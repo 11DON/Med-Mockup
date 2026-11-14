@@ -49,9 +49,16 @@ export default function GoalModal({ parentGoals, onSave, onCancel }) {
     TOTAL_TRIALS: 3,
     TIMEFRAME: "8 weeks",
   });
+  const [changedParams, setChangedParams] = useState(() => new Set());
 
   const setField = (name, value) => setForm((current) => ({ ...current, [name]: value }));
-  const setParam = (name, value) => setParams((current) => ({ ...current, [name]: value }));
+  const setParam = (name, value) => {
+    setParams((current) => ({ ...current, [name]: value }));
+    setChangedParams((current) => new Set(current).add(name));
+  };
+  const templatePreview = TEMPLATE.replace(/\[(\w+)\]/g, (_, key) =>
+    changedParams.has(key) ? params[key] : `[${key}]`,
+  );
 
   const save = () =>
     onSave({
@@ -95,7 +102,9 @@ export default function GoalModal({ parentGoals, onSave, onCancel }) {
 
       <section>
         <h4 className={styles.sectionTitle}>Template:</h4>
-        <div className={`${styles.box} ${styles.template}`}>{TEMPLATE}</div>
+        <div className={`${styles.box} ${styles.template}`}>
+          {templatePreview}
+        </div>
       </section>
 
       <section>

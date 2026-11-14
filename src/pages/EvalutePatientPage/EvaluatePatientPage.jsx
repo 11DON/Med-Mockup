@@ -3,25 +3,35 @@ import { STEPS, validators, StepContent, EXTRA_TABS } from "../AddPatientPage/st
 import { createPatient } from "../../data/patients.js";
 import styles from "./Evaluate.module.css";
 import PatientCard from "../../components/PatientCard/PatientCard.jsx";
-import PhysiotherapyPage from "./taps/PhysiotherapyPage.jsx";
 
 export default function EvalutePatientPage({
-  form, set, onCancel, onFinish, onBack, extraKeys = [], initialTab = 0, subpage,
+  form, set, onCancel, onFinish, onNavigateTab, assessmentPage, extraKeys = [], initialTab = 0,
 }) {
-  const [tab, setTab] = useState(initialTab);
+  const [stepSelection, setStepSelection] = useState(null);
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
 
+  const tab = stepSelection?.baseTab === initialTab
+    ? stepSelection.index
+    : initialTab;
   const tabNames = [...STEPS, ...extraKeys.map((k) => EXTRA_TABS[k].label)];
   const isExtra = tab >= STEPS.length;
   const activeExtraKey = isExtra ? extraKeys[tab - STEPS.length] : null;
+  const selectTab = (index) => {
+    if (index >= STEPS.length) {
+      setStepSelection(null);
+      onNavigateTab?.(extraKeys[index - STEPS.length]);
+    } else {
+      setStepSelection({ baseTab: initialTab, index });
+    }
+  };
 
   // save() stays exactly as it is
   const save = async () => {
     for (let i = 0; i < validators.length; i++) {
       const message = validators[i](form);   // fixed: call the validator
       if (message) {
-        setTab(i);
+        setStepSelection({ baseTab: initialTab, index: i });
         return setError(message);
       }
     }
@@ -50,7 +60,7 @@ export default function EvalutePatientPage({
             type="button"
             role="tab"
             aria-selected={tab === i}
-            onClick={() => setTab(i)}
+            onClick={() => selectTab(i)}
             className={styles.tab}
           >
             {name}
@@ -59,19 +69,19 @@ export default function EvalutePatientPage({
       </div>
 
       <fieldset className={styles.box} role="tabpanel">
-        {subpage === "physiotherapy" ? (
-          <PhysiotherapyPage onBack={onBack} />
-        ) : isExtra
-          ? EXTRA_TABS[activeExtraKey].render(form)
+        {isExtra
+          ? EXTRA_TABS[activeExtraKey].render(form, assessmentPage)
           : <StepContent index={tab} form={form} set={set} />}
-        {!subpage && error && <p className={styles.error}>{error}</p>}
-        {!subpage && activeExtraKey !== "evaluate" && (
+        {!isExtra && error && <p className={styles.error}>{error}</p>}
+        {activeExtraKey !== "evaluate" &&
+          activeExtraKey !== "physiotherapy" &&
+          activeExtraKey !== "tasks" && (
           <div className={styles.buttons}>
             <button className={styles.cancel} onClick={onCancel} disabled={saving}>Send</button>
             {!isExtra && (
-            <button className={styles.finish} onClick={save} disabled={saving}>
-              {saving ? "Saving..." : "Save"}
-            </button>
+              <button className={styles.finish} onClick={save} disabled={saving}>
+                {saving ? "Saving..." : "Save"}
+              </button>
             )}
           </div>
         )}

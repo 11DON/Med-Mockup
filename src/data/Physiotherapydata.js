@@ -151,14 +151,29 @@ export const initialGoals = [
 
 const defaultActivityDetails = {
   frequency: "2 to 3 times weekly, 15–20 minutes total.",
-  dosage: "2 sets of 5 jumps across the living room rug. Safety reminder: Always stay within arm’s reach during standing activities to prevent unintentional falls.",
+  dosage: "2 sets of 5 jumps across the living room rug.",
+  safetyReminder:
+    "Always stay within arm’s reach during standing activities to prevent unintentional falls.",
   setup: "Make a safe hopscotch area. Lead the fun when she loses her balance and give clear, simple cues.",
 };
 
 export const initialActivities = [
-  "Activity 1: Frog Jumps & Duck Walks",
-  "Activity 2: Inside Marble Run",
-  "Activity 3: Sitting & Standing Balance",
-  "Activity 4: Balloon Toy Sort",
-  "Activity 5: The Knight’s Treasure Hunt",
-].map((title) => ({ title, ...defaultActivityDetails }));
+  {
+    title: "Activity 1: Frog Jumps & Duck Walks",
+    frequency: "1x Daily (approx. 15–20 minutes total).",
+    dosage: "2 sets of 5 jumps across the living room rug.",
+    safetyReminder:
+      "Always stay within arm's reach of Liam during standing activities to prevent unassisted falls.",
+    parentTip:
+      "Make sure her heels aren't lifting off the floor when she drops down into the squat!",
+    howTo:
+      "Have Jana crouch down low to the floor like a frog. Encourage her to keep her feet flat on the floor as she bends his knees. Ask her to jump forward to catch a toy. Alternatively, have her waddle like a duck keeping her heels as close to the floor as possible.",
+
+  },
+  ...[
+    "Activity 2: Inside Marble Run",
+    "Activity 3: Sitting & Standing Balance",
+    "Activity 4: Balloon Toy Sort",
+    "Activity 5: The Knight’s Treasure Hunt",
+  ].map((title) => ({ title, ...defaultActivityDetails })),
+];

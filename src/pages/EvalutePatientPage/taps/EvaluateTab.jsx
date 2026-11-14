@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useRole } from "../../PortalLayout/RoleContext.jsx";
 import { sendPatientEmail } from "../../../components/Buttons/sendEmail.js";
 import styles from "./EvaluateTab.module.css";
 
@@ -21,7 +22,9 @@ const evaluationAreas = [
 
 export default function EvaluateTab({ patient }) {
   const navigate = useNavigate();
-  const { id, tab } = useParams();
+  const { id } = useParams();
+  const { role } = useRole();
+  const IsNotParctitioner = role === "specialist" || role === "moderator";
   const [selectedAreas, setSelectedAreas] = useState(
     () => new Set(evaluationAreas.filter((area) => area.checked).map((area) => area.id)),
   );
@@ -36,30 +39,40 @@ export default function EvaluateTab({ patient }) {
     });
   };
 
+  const handleAreaClick = (areaId) => {
+    navigate(`/patients/${id}/assess/${areaId}`);
+  };
+
   return (
     <div className={styles.content}>
       <div className={styles.areas} role="group" aria-label="Evaluation areas">
-        {evaluationAreas.map(({ id: areaId, label }) => (
-          <div className={styles.area} key={areaId}>
-            <input
-              type="checkbox"
-              checked={selectedAreas.has(areaId)}
-              onChange={() => toggleArea(areaId)}
-              aria-label={`Select ${label}`}
-            />
-            {areaId === "physiotherapy" ? (
-              <button
-                type="button"
-                className={styles.areaLink}
-                onClick={() => navigate(`/patients/${id}/${tab}/physiotherapy`)}
-              >
-                {label}
-              </button>
-            ) : (
-              <span>{label}</span>
-            )}
-          </div>
-        ))}
+        {evaluationAreas.map(({ id: areaId, label }) => {
+          const isLinkedArea =
+            areaId === "physiotherapy" || areaId === "sensory-perceptual";
+
+          return (
+            <div className={styles.area} key={areaId}>
+              <input
+                type="checkbox"
+                checked={selectedAreas.has(areaId)}
+                onChange={() => toggleArea(areaId)}
+                aria-label={`Select ${label}`}
+              />
+
+              {isLinkedArea && IsNotParctitioner ? (
+                <button
+                  type="button"
+                  className={styles.areaLink}
+                  onClick={() => handleAreaClick(areaId)}
+                >
+                  {label}
+                </button>
+              ) : (
+                <span>{label}</span>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       <fieldset className={styles.commentField}>

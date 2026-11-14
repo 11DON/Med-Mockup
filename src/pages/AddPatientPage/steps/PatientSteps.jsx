@@ -39,6 +39,6 @@ export function StepContent({ index, form, set }) {
 
 export const EXTRA_TABS = {
     evaluate: { label: "Evaluate", render: (form) => <EvaluateTab patient={form.main} /> },
-    assess: { label: "Assessment", render: () => <AssessmentTab /> },
+    assess: { label: "Assessment", render: (_form, page) => <AssessmentTab page={page} /> },
     tasks: { label: "Manage Tasks", render: () => <ManageTasksTab /> },
 };

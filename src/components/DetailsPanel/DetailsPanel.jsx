@@ -1,10 +1,7 @@
-import { useState } from 'react';
-import DetailsModal from '../Buttons/DetailsModal/detailsModal';
+import PatientCard from "../PatientCard/PatientCard.jsx";
 import styles from './DetailsPanel.module.css';
 import { sendPatientEmail } from '../Buttons/sendEmail';
-export default function DetailsPanel({ patient }) {
-
-    const [modalOpen, setModalOpen] = useState(false);
+export default function DetailsPanel({ patient, onDetails }) {
     if (!patient) {
         return (
             <section className={styles.panel}>
@@ -38,14 +35,12 @@ export default function DetailsPanel({ patient }) {
                 </div>
                 <div className={styles.actions}>
                     <button className={`${styles.btn} ${styles.btnSend}`} onClick={()=>sendPatientEmail(patient)}>Send</button>
-                    <button className={`${styles.btn} ${styles.btnDetails}`} onClick={() => setModalOpen(true)}>
+                    <button className={`${styles.btn} ${styles.btnDetails}`} onClick={onDetails}>
                         Details
                     </button>
                 </div>
             </div>
-            <DetailsModal patient={modalOpen ? patient : null}
-                onClose={() => setModalOpen(false)}
-             />
+            
         </section>
     )
 }

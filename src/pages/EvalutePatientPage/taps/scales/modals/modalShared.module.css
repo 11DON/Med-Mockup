@@ -24,7 +24,7 @@
   background: #5b9bd5;
   color: #fff;
   font-weight: 700;
-  font-size: 13px;
+  font-size: calc(13px * var(--font-scale, 1));
 }
 
 .body {
@@ -34,7 +34,7 @@
   padding: 12px;
   overflow: auto;
   color: #4a90d9;
-  font-size: 13px;
+  font-size: calc(13px * var(--font-scale, 1));
 }
 
 .footer {
@@ -72,13 +72,13 @@
 .subtitle {
   margin: 0;
   color: #666;
-  font-size: 16px;
+  font-size: calc(16px * var(--font-scale, 1));
 }
 
 .sectionTitle {
   margin: 0 0 4px;
   color: #4a90d9;
-  font-size: 14px;
+  font-size: calc(14px * var(--font-scale, 1));
   font-weight: 700;
 }
 
@@ -111,7 +111,7 @@
   border: 1px solid #5b9bd5;
   background: #fff;
   color: #4a90d9;
-  font-size: 13px;
+  font-size: calc(13px * var(--font-scale, 1));
 }
 
 .control:disabled {
@@ -171,14 +171,14 @@
 .cardTitle {
   display: block;
   color: #548235;
-  font-size: 15px;
+  font-size: calc(15px * var(--font-scale, 1));
   cursor: pointer;
 }
 
 .cardDesc {
   margin: 2px 0 0;
   color: #777;
-  font-size: 11px;
+  font-size: calc(11px * var(--font-scale, 1));
 }
 
 /* ---------- assign tasks: list | arrows | list ---------- */

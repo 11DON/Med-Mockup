@@ -1,0 +1,69 @@
+.manageTasks {
+  --font-scale: 1.5;
+  font-size: 150%;
+}
+.serviceDomain {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: #5b9bd5;
+  font-size: calc(13px * var(--font-scale, 1));
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 16px;
+  color: #5b9bd5;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.field select,
+.field input {
+  padding: 4px 6px;
+  border: 1px solid #5b9bd5;
+  color: #5b9bd5;
+  background: #fff;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin: 16px 12px 0 0;
+}
+
+.actions button {
+  min-width: 110px;
+  padding: 9px 27px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: #fff;
+  font: inherit;
+  font-size: 20px;
+  line-height: 1.2;
+  cursor: pointer;
+  box-shadow: inset 0 1px 2px #ffffffa6, 0 1px 2px #777;
+}
+
+.actions button:focus-visible {
+  outline: 2px solid #1f4e8c;
+  outline-offset: 2px;
+}
+
+.send {
+  background: linear-gradient(#c58cde, #8534aa);
+  
+}
+
+.viewSchedule {
+  background: linear-gradient(#a6d3f0, #5597cf);
+}

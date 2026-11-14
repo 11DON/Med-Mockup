@@ -1,0 +1,81 @@
+.page {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f1f1f1;
+  padding: 10px 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-style: italic;
+  color: #5b9bd5;
+}
+
+.user {
+  text-align: right;
+  color: #5b9bd5;
+}
+
+.icons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.mail {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  left: -8px;
+  background: #c0504d;
+  color: #fff;
+  font-size: 10px;
+  border-radius: 50%;
+  padding: 1px 5px;
+}
+
+.body {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.bodyNoSidebar {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.sidebar {
+  width: 140px;
+  min-height: 420px;
+  border: 1px solid #5b9bd5;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.link {
+  color: #5b9bd5;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.active {
+  color: #c55a11;
+  font-weight: bold;
+}
+
+.content {
+  flex: 1;
+}

@@ -14,7 +14,7 @@
 .stepper {
     display: flex;
     justify-content: center;
-    gap: 60px;
+    align-items: flex-start;   
     list-style: none;
     padding: 0;
     margin: 24px 0;
@@ -60,6 +60,11 @@
     background: #4e7d2c;
     border-color: #587445;
 }
+.stepper li.arrow {
+    color: #5b9bd5;      /* the icon uses currentColor */
+    margin: 1px 12px 0;  
+}
+
 .box {
     border: 1px solid #5b9bd5;
     padding: 24px;

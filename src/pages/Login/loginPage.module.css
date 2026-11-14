@@ -1,0 +1,54 @@
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #f5f8fc;
+}
+
+.card {
+  width: min(100%, 420px);
+  padding: 32px;
+  box-sizing: border-box;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #d5e5f7;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(34, 86, 138, 0.1);
+}
+
+.card h1 {
+  margin: 0 0 8px;
+  color: #347fbe;
+}
+
+.card p {
+  margin: 0 0 24px;
+  color: #526170;
+}
+
+.options {
+  display: grid;
+  gap: 12px;
+}
+
+.option {
+  min-height: 48px;
+  border: 1px solid #4a90d9;
+  border-radius: 6px;
+  background: #4a90d9;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: #347fbe;
+}
+
+.option:focus-visible {
+  outline: 3px solid #173f68;
+  outline-offset: 3px;
+}

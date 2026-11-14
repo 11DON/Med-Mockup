@@ -1,39 +1,41 @@
-import { Routes, Route, NavLink } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { RoleProvider } from "./pages/PortalLayout/RoleContext.jsx";
+import PortalLayout from "./pages/PortalLayout/PortalLayout.jsx";
+import RolePage from "./pages/PortalLayout/RolePage.jsx";
+import LoginPage from "./pages/Login/loginPage.jsx";
+import ParentPortalPage from "./pages/ParentPortal/ParentPortalPage.jsx";
 import InboxPage from "./pages/InboxPage.jsx";
 import SearchPatientPage from "./pages/searchPatient/SearchPatientPage.jsx";
-import PatientCardPage from "./pages/PatientCardPage/PatientCardPage.jsx"
-import styles from "./App.module.css";
+import PatientCardPage from "./pages/PatientCardPage/PatientCardPage.jsx";
 import AddPatientPage from "./pages/AddPatientPage/AddPatientPage.jsx";
-import EvalutePatientRoute from "./pages/EvalutePatientPage/EvaluatePatientRoute.jsx"
+import EvalutePatientRoute from "./pages/EvalutePatientPage/EvaluatePatientRoute.jsx";
+
 export default function App() {
   return (
-    <>
-      <h1 className={styles.mainTitle}>Pediatric Rehabilitation Management System</h1>
-
-      <nav className={styles.nav}>
-        <NavLink to="/" end className={({ isActive }) => isActive ? styles.navActive : styles.navLink}>
-          Inbox
-        </NavLink>
-        <NavLink to="/patients" end className={({ isActive }) => isActive ? styles.navActive : styles.navLink}>
-          Search Patient
-        </NavLink>
-        <NavLink to="/addPatinets" end className={({ isActive }) => isActive ? styles.navActive : styles.navLink}>
-          Add Patient
-        </NavLink>
-
-      </nav>
-
+    <RoleProvider>
       <Routes>
-        <Route path="/" element={<InboxPage />} />
-        <Route path="/patients" element={<SearchPatientPage />} />
-        <Route path="/patients/:id" element={<PatientCardPage />} />
-        <Route path="/addPatinets" element={<AddPatientPage
-          onCancel={() => console.log("cancelled")}
-          onFinish={(patient) => console.log("Patient")
-          }
+        {/* entry pages: no header or sidebar */}
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/roles" element={<RolePage />} />
+        <Route path="/parent-portal" element={<ParentPortalPage />} />
 
-        />} />
-        <Route path="/patients/:id/:tab/*" element={<EvalutePatientRoute />} />    </Routes>
-    </>
+        {/* everything else lives inside the portal layout */}
+        <Route element={<PortalLayout />}>
+          <Route path="/inbox" element={<InboxPage />} />
+          <Route path="/patients" element={<SearchPatientPage />} />
+          <Route path="/patients/:id" element={<PatientCardPage />} />
+          <Route
+            path="/addPatinets"
+            element={
+              <AddPatientPage
+                onCancel={() => console.log("cancelled")}
+                onFinish={(patient) => console.log("Patient", patient)}
+              />
+            }
+          />
+          <Route path="/patients/:id/:tab/*" element={<EvalutePatientRoute />} />
+        </Route>
+      </Routes>
+    </RoleProvider>
   );
 }

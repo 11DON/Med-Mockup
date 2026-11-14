@@ -1,6 +1,7 @@
 import styles from "../AddPatientPage/AddPatientPage.module.css"
 import { emptyGuardian } from "./steps/Guardians/GuardiansStep.jsx";
-import { useState } from "react";
+import { useState,Fragment  } from "react";
+import { MoveRight } from "lucide-react";
 import { STEPS, validators, StepContent } from "./steps/PatientSteps.jsx";
 import EvalutePatientPage from "../EvalutePatientPage/EvaluatePatientPage.jsx";
 
@@ -86,17 +87,25 @@ export default function AddPatientPage({ onCancel, onFinish }) {
     <div className={styles.page}>
       <h1 className={styles.title}>Add New Patient</h1>
 
-      <ol className={styles.stepper}>
-        {STEPS.map((name, i) => (
-          <li key={name} className={i === step ? styles.active : i < step ? styles.done : ""}>
-            <span className={styles.circle}>
-              {i < step && <span className={styles.tickDis}>✓</span>}
-              {i === step && <span className={styles.tick}>✓</span>}
-            </span>
-            {name}
-          </li>
-        ))}
-      </ol>
+<ol className={styles.stepper}>
+  {STEPS.map((name, i) => (
+    <Fragment key={name}>
+      <li className={i === step ? styles.active : i < step ? styles.done : ""}>
+        <span className={styles.circle}>
+          {i < step && <span className={styles.tickDis}>✓</span>}
+          {i === step && <span className={styles.tick}>✓</span>}
+        </span>
+        {name}
+      </li>
+
+      {i < STEPS.length - 1 && (
+        <li className={styles.arrow} aria-hidden="true">
+          <MoveRight size={64} strokeWidth={1.5} />
+        </li>
+      )}
+    </Fragment>
+  ))}
+</ol>
 
       <fieldset className={styles.box}>
         <legend>Step {step + 1}: {STEPS[step]}</legend>
