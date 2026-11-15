@@ -67,3 +67,9 @@
 .viewSchedule {
   background: linear-gradient(#a6d3f0, #5597cf);
 }
+
+.scheduleError {
+  margin: 8px 12px 0;
+  color: #b00020;
+  font-size: 16px;
+}

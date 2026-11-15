@@ -1,10 +1,90 @@
 .page {
-  max-width: 720px;
-  margin: 64px auto;
-  padding: 24px;
-  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  color: #666;
+  font-family: Calibri, Arial, sans-serif;
 }
 
-.page h1 {
-  color: #4a90d9;
+.home {
+  display: flex;
+  min-height: 100%;
+  justify-content: center;
+  padding: clamp(24px, 6vh, 72px) 0;
+}
+
+.patientCard {
+  box-sizing: border-box;
+  display: grid;
+  width: min(100%, 920px);
+  min-height: 280px;
+  grid-template-columns: minmax(140px, 220px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 56px);
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid #4a90d9;
+  background: #fff;
+}
+
+.homeAvatar {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.homePatientInfo {
+  min-width: 0;
+}
+
+.homeName {
+  margin: 0 0 18px;
+  color: #5b9bd5;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 400;
+}
+
+.homeAge,
+.homeGender,
+.homeArabic {
+  margin: 8px 0;
+  font-size: clamp(18px, 1.8vw, 24px);
+}
+
+.homeAge {
+  color: #c00000;
+}
+
+.homeGender {
+  color: #c55a11;
+}
+
+.homeArabic {
+  color: #5b9bd5;
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 12px;
+  }
+
+  .patientCard {
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 16px;
+    min-height: 0;
+    padding: 16px;
+  }
+
+  .homeName {
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+
+  .homeAge,
+  .homeGender,
+  .homeArabic {
+    font-size: 16px;
+  }
 }

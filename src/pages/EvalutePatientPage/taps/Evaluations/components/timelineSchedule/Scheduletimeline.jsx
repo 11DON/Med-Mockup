@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import styles from "./Scheduletimeline.module.css";
+import { hasLtgOverlap } from "./scheduleUtils.js";
 
 // header shade for each week (cycles if totalWeeks > 18)
 const WEEK_SHADES = [
@@ -11,31 +12,48 @@ const WEEK_SHADES = [
 const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 
 // items: [{ id, label, type: "ltg" | "stg", start: 1-based week, weeks: length }]
-export default function ScheduleTimeline({ items, onChange, totalWeeks = 18 }) {
+export default function ScheduleTimeline({
+  items,
+  onChange,
+  onOverlapAttempt,
+  totalWeeks = 18,
+}) {
   const gridRef = useRef(null);
   const drag = useRef(null);
 
   const moveTo = (item, start) => {
-  const parent = items.find((i) => i.id === item.parentId);
+    const parent = items.find((i) => i.id === item.parentId);
 
-  // an STG stays inside its LTG, anything else stays inside the grid
-  const min = parent ? parent.start : 1;
-  const max = parent
-    ? Math.max(min, parent.start + parent.weeks - item.weeks)
-    : totalWeeks - item.weeks + 1;
+    // an STG stays inside its LTG, anything else stays inside the grid
+    const min = parent ? parent.start : 1;
+    const max = parent
+      ? Math.max(min, parent.start + parent.weeks - item.weeks)
+      : totalWeeks - item.weeks + 1;
 
-  const safeStart = clamp(start, min, max);
-  if (safeStart === item.start) return;
-  const delta = safeStart - item.start;
+    const safeStart = clamp(start, min, max);
+    if (safeStart === item.start) return;
+    const delta = safeStart - item.start;
+    const movingItems = items
+      .filter((scheduled) => scheduled.id === item.id || scheduled.parentId === item.id)
+      .map((scheduled) => ({
+        ...scheduled,
+        start: scheduled.id === item.id ? safeStart : scheduled.start + delta,
+      }));
+    const movingIds = new Set(movingItems.map((scheduled) => scheduled.id));
+    if (movingItems.some((candidate) => hasLtgOverlap(items, candidate, movingIds))) {
+      onOverlapAttempt?.(item);
+      return;
+    }
 
-  onChange(
-    items.map((i) => {
-      if (i.id === item.id) return { ...i, start: safeStart };
-      if (i.parentId === item.id) return { ...i, start: i.start + delta }; // STGs follow their LTG
-      return i;
-    }),
-  );
-};
+    onOverlapAttempt?.(null);
+    onChange(
+      items.map((i) => {
+        if (i.id === item.id) return { ...i, start: safeStart };
+        if (i.parentId === item.id) return { ...i, start: i.start + delta };
+        return i;
+      }),
+    );
+  };
 
   const handlePointerDown = (e, item) => {
     e.currentTarget.setPointerCapture(e.pointerId);

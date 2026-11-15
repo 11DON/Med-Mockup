@@ -1,10 +1,21 @@
+import { Outlet } from "react-router-dom";
 import styles from "./ParentPortalPage.module.css";
+import Sidebar from "./components/sideBar.jsx";
 
 export default function ParentPortalPage() {
   return (
-    <main className={styles.page}>
-      <h1>Parent Portal</h1>
-      <p>Welcome to the Parent Portal.</p>
-    </main>
+    <div className={styles.page}>
+      <Sidebar>
+        <Outlet />
+      </Sidebar>
+    </div>
+  );
+}
+
+export function ParentPortalHome() {
+  return (
+    <section className={styles.home} aria-label="Patient card">
+    
+    </section>
   );
 }

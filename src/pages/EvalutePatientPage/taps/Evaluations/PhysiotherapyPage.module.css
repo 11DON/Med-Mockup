@@ -290,6 +290,7 @@
   background: transparent;
   color: #d64b00;
   font: inherit;
+  font-size: calc(13px * var(--font-scale, 1));
   text-align: left;
   cursor: pointer;
 }
@@ -388,6 +389,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.scheduleError {
+  flex-basis: 100%;
+  margin: 0;
+  color: #b00020;
+  font-size: calc(12px * var(--font-scale, 1));
 }
 
 .scheduleAction {

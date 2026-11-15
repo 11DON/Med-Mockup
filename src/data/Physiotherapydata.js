@@ -47,7 +47,7 @@ export const initialSummary = "Jana is a 6-year-old female with a diagnosis of s
 export const initialPlan = {
   frequencyCount: 2,
   frequencyUnit: "week",
-  durationCount: 12,
+  durationCount: 4,
   durationUnit: "weeks",
   diagnosis: "Spastic diplegic cerebral palsy (ICD-10 code G80.1)",
   interventions:
@@ -119,7 +119,7 @@ export const initialObservations = [
 ];
 
 const defaultGoalDetails = [
-  "Duration: 12 weeks.",
+  "Duration: 4 weeks.",
   "Baseline: walks with assistance and needs support on uneven surfaces.",
   "Criteria: walk across 30 centimeters of uneven surface with a normalized heel-toe pattern.",
   "Full Description: Jana will demonstrate independent functional mobility for 30 feet with minimal assistance and no falls in 3 consecutive sessions.",
@@ -127,21 +127,21 @@ const defaultGoalDetails = [
 
 export const initialGoals = [
   {
-    title: "LTG 1: Independent Mobility (Target: 12 Weeks)",
+    title: "LTG 1: Independent Mobility (Target: 4 Weeks)",
     children: [
-      "STG 1.1: Active Flexibility (Target: 4 Weeks)",
+      "STG 1.1: Active Flexibility (Target: 2 Weeks)",
       "Task A: Ankle Mobility Walks",
       "Task B: Incline Board Play",
-      "STG 1.2: Static Standing Balance (Target: 6 Weeks)",
+      "STG 1.2: Static Standing Balance (Target: 2 Weeks)",
       "Task A: Balloon Tap",
       "Task B: High-Low Toy Sorting",
     ],
     details: defaultGoalDetails,
   },
   {
-    title: "LTG 2: Goal-directed Transitions (Target: 12 Weeks)",
+    title: "LTG 2: Goal-directed Transitions (Target: 4 Weeks)",
     children: [
-      "STG 2.1: Transitional Strength (Target: 6 Weeks)",
+      "STG 2.1: Transitional Strength (Target: 4 Weeks)",
       "Task A: Sit-to-Stand Treasure Hunt",
       "Task B: Bench Push-to-Stand",
     ],
@@ -177,3 +177,68 @@ export const initialActivities = [
     "Activity 5: The Knight’s Treasure Hunt",
   ].map((title) => ({ title, ...defaultActivityDetails })),
 ];
+
+// ---------------------------------------------------------------------------
+// Sessions (2 per week x 12 weeks = 24), keyed by date "YYYY-MM-DD"
+// Matches initialPlan (frequencyCount: 2, durationCount: 12) and initialGoals.
+// ---------------------------------------------------------------------------
+const pad = (n) => String(n).padStart(2, "0");
+const toKey = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+
+const LTG1 = "LTG 1: Independent Mobility";
+const LTG2 = "LTG 2: Goal-directed Transitions";
+
+const STG_11 = {
+  ltg: LTG1,
+  stg: "STG 1.1: Active Flexibility",
+  tasks: ["Task A: Ankle Mobility Walks", "Task B: Incline Board Play"],
+  tone: "blue",
+};
+const STG_12 = {
+  ltg: LTG1,
+  stg: "STG 1.2: Static Standing Balance",
+  tasks: ["Task A: Balloon Tap", "Task B: High-Low Toy Sorting"],
+  tone: "blue",
+};
+const STG_21 = {
+  ltg: LTG2,
+  stg: "STG 2.1: Transitional Strength",
+  tasks: ["Task A: Sit-to-Stand Treasure Hunt", "Task B: Bench Push-to-Stand"],
+  tone: "green",
+};
+
+// Which goal block a session (1-based) works on
+function focusFor(n) {
+  if (n <= 8) return STG_11;            // weeks 1-4  -> STG 1.1 (target 4 weeks)
+  if (n <= 12) return n % 2 ? STG_12 : STG_21; // weeks 5-6 -> STG 1.2 & 2.1 (target 6 weeks)
+  return n % 2 ? STG_12 : STG_21;       // weeks 7-12 -> consolidate toward LTGs (12 weeks)
+}
+
+export function buildSessions({
+  startDate = "2026-11-17",             // a Tuesday; session 2 lands on Thu Nov 19
+  therapist = "Amro Mahmoud",
+  room = "Room 3",
+  totalSessions = initialPlan.frequencyCount * initialPlan.durationCount, // 24
+} = {}) {
+  const [y, m, d] = startDate.split("-").map(Number);
+  const sessions = {};
+
+  for (let i = 0; i < totalSessions; i++) {
+    const week = Math.floor(i / initialPlan.frequencyCount);
+    const slot = i % initialPlan.frequencyCount;      // 0 = first visit, 1 = second visit
+    const date = new Date(y, m - 1, d + week * 7 + slot * 2); // e.g. Tue, Thu
+
+    sessions[toKey(date)] = {
+      sessionNo: i + 1,
+      therapist,
+      room,
+      duration: 30,
+      from: "10 AM",
+      to: "10:30 AM",
+      ...focusFor(i + 1),
+    };
+  }
+  return sessions;
+}
+
+export const initialSessions = buildSessions();
