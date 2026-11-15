@@ -20,7 +20,7 @@ const send = () => {
     return;
   }
   addThread(form);
-  navigate("/parent-portal/message-center");   // back to the list
+  navigate("..");
 };
 
   return (

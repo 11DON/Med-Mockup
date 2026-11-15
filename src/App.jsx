@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { RoleProvider } from "./pages/PortalLayout/RoleContext.jsx";
 import PortalLayout from "./pages/PortalLayout/PortalLayout.jsx";
 import RolePage from "./pages/PortalLayout/RolePage.jsx";
@@ -22,6 +22,8 @@ import NewActivityLog from "./pages/ParentPortal/SidebarNav/NewActivityLog.jsx";
 import { ScheduleReviewProvider } from "./pages/ParentPortal/SidebarNav/ScheduleReviewContext.jsx";
 import ReviewSchedule from "./pages/ParentPortal/SidebarNav/ReviewSchedule.jsx";
 import FillScaleRequest from "./pages/ParentPortal/SidebarNav/FillScaleRequest.jsx";
+import TherapistNav from "./pages/TherapistPortal/therapistNav.jsx";
+import TherapistSessionPage from "./pages/TherapistPortal/TherapistSessionPage.jsx";
 function AddPatientInPortal() {
   const navigate = useNavigate();
   return (
@@ -35,6 +37,18 @@ function AddPatientInPortal() {
   )
 }
 
+function TherapistSchedule() {
+  const navigate = useNavigate();
+  return (
+    <ViewSchedule
+      onSession={({ date, session }) =>
+        navigate(`/therapist-portal/session?date=${date}&session=${session.no}`)
+      }
+      onDetails={() => navigate("/therapist-portal/patients/P-1001")}
+    />
+  );
+}
+
 export default function App() {
   return (
     <RoleProvider>
@@ -44,6 +58,18 @@ export default function App() {
         {/* entry pages: no header or sidebar */}
         <Route path="/" element={<LoginPage />} />
         <Route path="/roles" element={<RolePage />} />
+        <Route path="/therapist-portal" element={<TherapistNav />}>
+          <Route index element={<Navigate to="view-schedule" replace />} />
+          <Route path="search-patient" element={<SearchPatientPage />} />
+          <Route path="patients/:id" element={<PatientCardPage />} />
+          <Route path="view-schedule" element={<TherapistSchedule />} />
+          <Route path="session" element={<TherapistSessionPage />} />
+          <Route path="message-center" element={<MessageCenter />}>
+            <Route index element={<MessageList />} />
+            <Route path="new" element={<NewMessage />} />
+            <Route path=":id" element={<MessageThread />} />
+          </Route>
+        </Route>
         <Route path="/parent-portal" element={<ParentPortalPage />}>
           <Route index element={<ParentPortalHome />} />
           <Route path="message-center" element={<MessageCenter />}>

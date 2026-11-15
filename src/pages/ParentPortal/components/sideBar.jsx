@@ -4,7 +4,6 @@ import { IdCard, Mail } from "lucide-react";
 
 import NotificationBell from "../SidebarNav/NotificationBell.jsx";
 
-const parentActions = ["Review Schedule", "Fill Scale Request"];
 const navigation = [
   { label: "View Schedule", to: "/parent-portal/view-shedule" },
   { label: "Progress", to: "/parent-portal/progress-chart" },

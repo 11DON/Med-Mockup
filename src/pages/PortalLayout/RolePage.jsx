@@ -4,12 +4,12 @@ import { useRole } from "../PortalLayout/RoleContext.jsx";
 import styles from "./RolePage.module.css";
 
 export default function RolePage() {
-  const { role,chooseRole } = useRole();
+  const { chooseRole } = useRole();
   const navigate = useNavigate();
 
   const pick = (key) => {
     chooseRole(key);
-    navigate("/inbox");
+    navigate(key === "Therapist" ? "/therapist-portal" : "/inbox");
   };
 
   return (
