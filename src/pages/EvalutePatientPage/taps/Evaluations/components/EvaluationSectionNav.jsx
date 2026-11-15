@@ -1,3 +1,4 @@
+import { useId, useState } from "react";
 import styles from "../PhysiotherapyPage.module.css";
 
 const sections = [
@@ -10,13 +11,41 @@ const sections = [
 ];
 
 export default function EvaluationSectionNav() {
+  const [isOpen, setIsOpen] = useState(false);
+  const navId = useId();
+
   return (
-    <nav className={styles.sectionNav} aria-label="Evaluation sections">
-      {sections.map(({ id, label }) => (
-        <a className={styles.sectionNavLink} href={`#${id}`} key={id}>
-          {label}
-        </a>
-      ))}
-    </nav>
+    <div className={styles.sectionNavContainer}>
+      <button
+        className={styles.sectionNavToggle}
+        type="button"
+        aria-expanded={isOpen}
+        aria-controls={navId}
+        onClick={() => setIsOpen((open) => !open)}
+      >
+        <span className={styles.hamburgerIcon} aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </span>
+        Sections
+      </button>
+      <nav
+        className={`${styles.sectionNav} ${isOpen ? styles.sectionNavExpanded : styles.sectionNavCollapsed}`}
+        id={navId}
+        aria-label="Evaluation sections"
+      >
+        {sections.map(({ id, label }) => (
+          <a
+            className={styles.sectionNavLink}
+            href={`#${id}`}
+            key={id}
+            onClick={() => setIsOpen(false)}
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+    </div>
   );
 }

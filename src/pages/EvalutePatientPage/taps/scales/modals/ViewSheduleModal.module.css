@@ -9,7 +9,9 @@
 }
 
 .modal {
-  width: min(860px, 94vw);
+  box-sizing: border-box;
+  width: min(615px, 62.66vw);
+  transform: scale(1.5);
   background: #4a90d9;
   border: 1px solid #3a7bc0;
   font-family: Calibri, Arial, sans-serif;
@@ -19,23 +21,25 @@
 .header {
   color: #fff;
   font-weight: bold;
-  font-size: 16px;
-  padding: 10px 12px;
+  font-size: 12px;
+  padding: 5px 8px;
 }
 
 .body {
   display: flex;
-  gap: 16px;
-  padding: 14px;
+  gap: 8px;
+  padding: 4px 6px;
   background: #fff;
   margin: 0 6px;
 }
 
 /* ---------- calendar ---------- */
 .calendar {
-  width: 245px;
-  border: 1px solid #5b9bd5;
-  padding: 8px;
+  box-sizing: border-box;
+  width: 190px;
+  min-height: 165px;
+  border: 1px solid #999;
+  padding: 4px 6px;
   flex-shrink: 0;
 }
 
@@ -43,9 +47,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 18px;
-  color: #444;
-  margin-bottom: 8px;
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 3px;
 }
 
 .nav {
@@ -53,41 +57,41 @@
   border: none;
   color: #777;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 5px 3px;
+  gap: 1px 2px;
   text-align: center;
 }
 
 .weekday {
   color: #333;
-  font-size: 15px;
-  padding: 4px 0;
+  font-size: 12px;
+  padding: 2px 0;
 }
 
 .day {
-  min-width: 28px;
-  min-height: 24px;
-  padding: 2px 4px;
+  min-width: 18px;
+  min-height: 17px;
+  padding: 1px 2px;
   border: none;
   background: transparent;
   font: inherit;
-  font-size: 16px;
+  font-size: 12px;
   color: #333;
   cursor: pointer;
 }
 
 .greenDay {
-  background: #c6d9c6;
+  background: #c9d9c7;
   color: #4e7d2c;
 }
 
 .blueDay {
-  background: #c5daf0;
+  background: #cbe0f2;
   color: #5b9bd5;
 }
 
@@ -100,20 +104,20 @@
 .details {
   flex: 1;
   border: 1px solid #5b9bd5;
-  padding: 14px 18px;
+  padding: 5px 8px;
 }
 
 .details dl { margin: 0; }
 
 .row {
   display: flex;
-  gap: 12px;
-  margin-bottom: 4px;
-  font-size: 16px;
+  gap: 8px;
+  margin-bottom: 2px;
+  font-size: 11px;
 }
 
 .label {
-  width: 130px;
+  width: 76px;
   text-align: right;
   color: #5b9bd5;
   flex-shrink: 0;
@@ -125,7 +129,7 @@
 }
 
 .extra {
-  margin-left: 30px;
+  margin-left: 20px;
   color: #5b9bd5;
 }
 
@@ -135,28 +139,43 @@
 
 .empty {
   color: #888;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 /* ---------- footer ---------- */
 .footer {
   display: flex;
   justify-content: center;
-  gap: 130px;
+  gap: 86px;
   background: #fff;
   margin: 0 6px 6px;
-  padding: 16px 0 20px;
+  padding: 12px 0 23px;
 }
 
 .btn {
-  min-width: 105px;
-  padding: 4px 18px;
+  min-width: 75px;
+  padding: 2px 10px;
   color: #fff;
   font: inherit;
-  font-size: 15px;
+  font-size: 11px;
   border: 1px solid #3a7bc0;
   border-radius: 3px;
   background: linear-gradient(#8cc1ea, #4a90d9);
   box-shadow: inset 0 1px 2px #ffffffa6, 0 1px 2px #777;
   cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .body {
+    flex-direction: column;
+  }
+
+  .calendar {
+    width: 100%;
+    min-height: 0;
+  }
+
+  .footer {
+    gap: 24px;
+  }
 }

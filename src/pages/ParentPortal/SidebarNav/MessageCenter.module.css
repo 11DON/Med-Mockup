@@ -118,7 +118,10 @@
   color: #777;
   margin-bottom: 4px;
 }
+.rowClinic .meta{
+    text-align: right;
 
+}
 .meta b {
   color: #5b9bd5;
   font-weight: normal;

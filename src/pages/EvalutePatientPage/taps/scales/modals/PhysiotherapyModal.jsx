@@ -2,7 +2,13 @@ import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import styles from "./PhysiotherapyModal.module.css";
 
-export default function PhysiotherapyModal({ title, children, onSave, onClose }) {
+export default function PhysiotherapyModal({
+  title,
+  children,
+  onSave,
+  onClose,
+  className = "",
+}) {
   const dialogRef = useRef(null);
 
   useEffect(() => {
@@ -22,7 +28,7 @@ export default function PhysiotherapyModal({ title, children, onSave, onClose })
   return createPortal(
     <dialog
       ref={dialogRef}
-      className={styles.dialog}
+      className={`${styles.dialog} ${className}`}
       onCancel={(event) => {
         event.preventDefault();
         onClose();

@@ -32,10 +32,7 @@ function GrossMotorForm({ answers, onAnswerChange }) {
   const score = calculateScaleScore("gmfm", answers);
   return (
     <>
-      <p className={styles.note}>
-        Rate each item from 0 to 3. The displayed score is the raw sum of the
-        items shown here, not the official GMFM-66 composite score.
-      </p>
+  
       <div className={styles.gmfmList}>
         {gmfmDimensions.map((dimension) => {
           const dimensionScore = score.dimensions.find((entry) => entry.id === dimension.id)?.score ?? 0;
@@ -77,7 +74,6 @@ function GrossMotorForm({ answers, onAnswerChange }) {
           rows="3"
         />
       </label>
-      <ScoreSummary label={score.label} />
     </>
   );
 }
@@ -230,3 +226,5 @@ export default function ScaleAssessment({ scale, answers, onAnswerChange }) {
   }
   return <p className={styles.note}>No assessment form is available for this scale.</p>;
 }
+
+

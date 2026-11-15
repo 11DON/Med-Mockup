@@ -6,9 +6,7 @@ import styles from "./PortalLayout.module.css";
 
 const links = [
   { to: "/patients", label: "Search Patient" },
-  { to: "/addPatinets", label: "Add Patient" },
-  { to: "/schedule", label: "View Schedule" },
-  { to: "/messages", label: "Message Center" },
+  // { to: "/addPatinets", label: "Add Patient" },
 ];
 
 export default function PortalLayout() {

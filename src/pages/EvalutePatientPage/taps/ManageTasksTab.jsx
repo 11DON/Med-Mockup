@@ -20,11 +20,9 @@ export default function ManageTasksTab({ page }) {
   const [plan, setPlan] = useState(initialPlan);
   const { role } = useRole();
   const [showSchedule, setShowSchedule] = useState(false);
-  const [scheduleError, setScheduleError] = useState("");
 
   const updateSchedule = (items) => {
     setSchedule(items);
-    setScheduleError("");
   };
 
   return (
@@ -79,13 +77,7 @@ export default function ManageTasksTab({ page }) {
         items={schedule}
         onChange={updateSchedule}
         totalWeeks={TOTAL_SCHEDULE_WEEKS}
-        onOverlapAttempt={(item) => setScheduleError(
-          item
-            ? `Moving this ${item.type.toUpperCase()} would overlap another scheduled ${item.type.toUpperCase()}.`
-            : "",
-        )}
       />
-      {scheduleError && <p className={styles.scheduleError} role="alert">{scheduleError}</p>}
       <div className={styles.actions}>
         <button type="button" className={styles.send}>Send</button>
         <button type="button" className={styles.viewSchedule} onClick={() => setShowSchedule(true)}>View Schedule</button>
@@ -93,9 +85,6 @@ export default function ManageTasksTab({ page }) {
       <ScheduleModal
         open={showSchedule}
         onClose={() => setShowSchedule(false)}
-        scheduleItems={schedule}
-        startDate={startDate}
-        therapist={therapist}
       />
     </div>
   );

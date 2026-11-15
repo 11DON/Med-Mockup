@@ -5,7 +5,6 @@ import GoalsModalstg from "../../scales/modals/GoalsModalstg.jsx";
 import AssignTasksModal from "../../scales/modals/AssignTasksModal.jsx";
 import { initialGoals, taskCatalog } from "../../../../../data/Physiotherapydata.js";
 import GoalModal from "../../scales/modals/GoalModal.jsx";
-import { hasLtgOverlap } from "./timelineSchedule/scheduleUtils.js";
 // One "Label: value" line in the goal detail panel
 function GoalDetailItem({ detail, readOnly = false,
   milestoneId,
@@ -144,11 +143,6 @@ export default function GoalsSection({
       weeks: scheduleWeeks,
       tasks: scheduleTasks,
     };
-    if (hasLtgOverlap(scheduleItems, item)) {
-      setScheduleError(`This ${scheduleType.toUpperCase()} overlaps another scheduled ${scheduleType.toUpperCase()}.`);
-      return;
-    }
-
     setScheduleError("");
     onScheduleChange([
       ...scheduleItems.filter((scheduled) => scheduled.id !== scheduleId),
@@ -164,34 +158,21 @@ export default function GoalsSection({
   };
 
   const changeStartWeek = (week) => {
-    const candidate = {
-      id: scheduleId,
-      type: scheduleType,
-      start: week,
-      weeks: scheduleWeeks,
-    };
     if (scheduleType === "stg" && parentScheduledItem && !canFitInParent) {
       setScheduleError("This STG is longer than its scheduled LTG.");
       return;
     }
     const delta = scheduledItem ? week - scheduledItem.start : 0;
-    const movingItems = scheduleType === "ltg" && scheduledItem
-      ? scheduleItems
-        .filter((item) => item.id === scheduleId || item.parentId === scheduleId)
-        .map((item) => ({
-          ...item,
-          start: item.id === scheduleId ? week : item.start + delta,
-        }))
-      : [candidate];
-    const movingIds = new Set(movingItems.map((item) => item.id));
-    if (movingItems.some((item) => hasLtgOverlap(scheduleItems, item, movingIds))) {
-      setScheduleError(`This ${scheduleType.toUpperCase()} overlaps another scheduled ${scheduleType.toUpperCase()}.`);
-      return;
-    }
-
     setScheduleError("");
     setStartWeek(week);
     if (scheduledItem) {
+      const movingIds = new Set(
+        scheduleType === "ltg"
+          ? scheduleItems
+            .filter((item) => item.id === scheduleId || item.parentId === scheduleId)
+            .map((item) => item.id)
+          : [scheduleId],
+      );
       onScheduleChange(
         scheduleItems.map((item) => {
           if (!movingIds.has(item.id)) return item;

@@ -1,114 +1,45 @@
-import { Fragment, useState, useEffect, useMemo } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import styles from "./ViewSheduleModal.module.css";
 
 const WEEKDAYS = ["S", "M", "T", "W", "T", "F", "S"];
 const pad = (n) => String(n).padStart(2, "0");
 const toKey = (y, m, d) => `${y}-${pad(m + 1)}-${pad(d)}`;
-const dayToneStyles = {
-  green: styles.greenDay,
-  blue: styles.blueDay,
-};
-
-function getItemsForWeek(scheduleItems, week) {
-  return scheduleItems.filter(
-    (item) => week >= item.start && week < item.start + item.weeks,
-  );
-}
-
-function buildCalendarSessions({
-  scheduleItems,
-  startDate,
-  therapist,
-  room,
-  duration,
-  from,
-  to,
-}) {
-  const [year, month, day] = (startDate ?? "").split("-").map(Number);
-  if (!year || !month || !day) return {};
-
-  const lastWeek = Math.max(
-    0,
-    ...scheduleItems.map((item) => item.start + item.weeks - 1),
-  );
-  const sessions = {};
-  let sessionNo = 0;
-
-  for (let week = 1; week <= lastWeek; week += 1) {
-    const items = getItemsForWeek(scheduleItems, week);
-    if (!items.length) continue;
-
-    const longTermGoal = items.find((item) => item.type === "ltg");
-    const shortTermGoals = items
-      .filter((item) => item.type === "stg")
-      .map((item) => ({
-        id: item.id,
-        label: item.label,
-        tasks: [...new Set(item.tasks ?? [])],
-      }));
-
-    for (let dayInWeek = 0; dayInWeek < 7; dayInWeek += 1) {
-      const date = new Date(year, month - 1, day + (week - 1) * 7 + dayInWeek);
-      const dateKey = toKey(date.getFullYear(), date.getMonth(), date.getDate());
-      sessionNo += 1;
-      sessions[dateKey] = {
-        sessionNo,
-        week,
-        therapist,
-        room,
-        duration,
-        from,
-        to,
-        ltg: longTermGoal?.label ?? "",
-        stgs: shortTermGoals,
-        tasks: [...new Set(longTermGoal?.tasks ?? [])],
-        tone: dayInWeek % 2 === 0 ? "green" : "blue",
-      };
-    }
-  }
-
-  return sessions;
-}
+const SAMPLE_SESSION_DATES = [
+  "2026-11-16",
+  "2026-11-19",
+  "2026-11-23",
+  "2026-11-26",
+  "2026-11-30",
+];
+const SAMPLE_SESSIONS = Object.fromEntries(
+  SAMPLE_SESSION_DATES.map((date, index) => [
+    date,
+    {
+      sessionNo: index + 1,
+      therapist: "Amro Mahmoud",
+      room: "Room 3",
+      duration: 30,
+      from: "10 AM",
+      to: "10:30 AM",
+      ltg: "LTG 1: Independent Mobility",
+      stgs: [{
+        id: "stg-1-1",
+        label: "STG 1.1: Ankle Flexibility",
+        tasks: ["Task A: Animal Walks", "Task B: Incline Board Play"],
+      }],
+      tasks: [],
+    },
+  ]),
+);
 
 export default function ScheduleModal({
   open,
   onClose,
-  scheduleItems = [],
-  startDate,
-  therapist = "Amro Mahmoud",
-  room = "Room 3",
-  duration = 30,
-  from = "10 AM",
-  to = "10:30 AM",
   onChangeDate,
 }) {
-  const today = new Date();
-  const [view, setView] = useState({ y: today.getFullYear(), m: today.getMonth() });
-  const [selected, setSelected] = useState(toKey(today.getFullYear(), today.getMonth(), today.getDate()));
-  const sessions = useMemo(
-    () => buildCalendarSessions({
-      scheduleItems,
-      startDate,
-      therapist,
-      room,
-      duration,
-      from,
-      to,
-    }),
-    [scheduleItems, startDate, therapist, room, duration, from, to],
-  );
-
-  useEffect(() => {
-    if (!open) return;
-    const sessionDates = Object.keys(sessions).sort();
-    if (sessionDates.length) {
-      const selectedDate = sessionDates[Math.min(1, sessionDates.length - 1)];
-      setSelected(selectedDate);
-      const [year, month] = selectedDate.split("-").map(Number);
-      setView({ y: year, m: month - 1 });
-    }
-  }, [open, sessions]);
+  const [view, setView] = useState({ y: 2026, m: 10 });
+  const [selected, setSelected] = useState("2026-11-19");
 
   useEffect(() => {
     if (!open) return;
@@ -134,7 +65,7 @@ export default function ScheduleModal({
       return { y: d.getFullYear(), m: d.getMonth() };
     });
 
-  const session = sessions[selected];
+  const session = SAMPLE_SESSIONS[selected];
   const longDate = new Date(selected + "T00:00:00").toLocaleDateString("en-US", {
     weekday: "long", year: "numeric", month: "long", day: "numeric",
   });
@@ -161,10 +92,12 @@ export default function ScheduleModal({
               {cells.map((day, i) => {
                 if (!day) return <div key={i} />;
                 const key = toKey(view.y, view.m, day);
-                const daySession = sessions[key];
+                const daySession = SAMPLE_SESSIONS[key];
+                const isInScheduledRange = key >= "2026-11-16" && key <= "2026-11-30";
                 const cls = [
                   styles.day,
-                  daySession ? dayToneStyles[daySession.tone] : "",
+                  isInScheduledRange ? styles.greenDay : "",
+                  daySession ? styles.blueDay : "",
                   key === selected ? styles.selected : "",
                 ].join(" ");
                 return (

@@ -1,15 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useRole } from "../PortalLayout/RoleContext.jsx";
 import styles from "./loginPage.module.css";
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const { chooseRole } = useRole();
 
-  const openTherapistPortal = () => {
-    chooseRole("Therapist");
-    navigate("/therapist-portal");
-  };
+
 
   return (
     <main className={styles.page}>
@@ -28,9 +23,6 @@ export default function LoginPage() {
             onClick={() => navigate("/parent-portal")}
           >
             Parent
-          </button>
-          <button className={styles.option} onClick={openTherapistPortal}>
-            Therapist
           </button>
         </div>
       </section>

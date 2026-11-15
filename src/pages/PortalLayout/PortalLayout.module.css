@@ -1,5 +1,7 @@
 .page {
   padding: px;
+  font-family: Calibri, Arial, sans-serif;
+
 }
 
 .header {
@@ -57,7 +59,7 @@
 
 .sidebar {
   width: 140px;
-  min-height: 420px;
+  min-height: 20px;
   border: 1px solid #5b9bd5;
   padding: 20px;
   display: flex;

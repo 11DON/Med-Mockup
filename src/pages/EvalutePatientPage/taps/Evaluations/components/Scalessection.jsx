@@ -126,7 +126,14 @@ export default function ScalesSection() {
       </div>
 
       {modalType && (
-        <PhysiotherapyModal title={modalTitle} onClose={closeModal} onSave={handleSave}>
+        <PhysiotherapyModal
+          title={modalTitle}
+          className={modalType === "scaleAssessment" && ["gmfm", "rom"].includes(values.id)
+            ? modalStyles.wideAssessmentDialog
+            : ""}
+          onClose={closeModal}
+          onSave={handleSave}
+        >
           {modalType === "scales" && (
             <ScalePicker
               selectedIds={values.selectedScaleIds}

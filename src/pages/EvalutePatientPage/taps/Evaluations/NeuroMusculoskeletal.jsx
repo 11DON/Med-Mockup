@@ -10,7 +10,7 @@ export default function NeuroMusculoskeletal(){
     return (
         <main className={styles.page}>
             <div className={styles.pageHeading}>
-                <h1>Neuro-Musculoskeletal Module (PT/OT)</h1>
+                <h1>Occupational Therapy (OT)</h1>
             </div>
             <div className={styles.moduleLayout}>
               <EvaluationSectionNav />

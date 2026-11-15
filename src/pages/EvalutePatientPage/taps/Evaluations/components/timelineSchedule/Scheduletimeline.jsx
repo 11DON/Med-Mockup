@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import styles from "./Scheduletimeline.module.css";
-import { hasLtgOverlap } from "./scheduleUtils.js";
 
 // header shade for each week (cycles if totalWeeks > 18)
 const WEEK_SHADES = [
@@ -15,7 +14,6 @@ const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 export default function ScheduleTimeline({
   items,
   onChange,
-  onOverlapAttempt,
   totalWeeks = 18,
 }) {
   const gridRef = useRef(null);
@@ -33,19 +31,6 @@ export default function ScheduleTimeline({
     const safeStart = clamp(start, min, max);
     if (safeStart === item.start) return;
     const delta = safeStart - item.start;
-    const movingItems = items
-      .filter((scheduled) => scheduled.id === item.id || scheduled.parentId === item.id)
-      .map((scheduled) => ({
-        ...scheduled,
-        start: scheduled.id === item.id ? safeStart : scheduled.start + delta,
-      }));
-    const movingIds = new Set(movingItems.map((scheduled) => scheduled.id));
-    if (movingItems.some((candidate) => hasLtgOverlap(items, candidate, movingIds))) {
-      onOverlapAttempt?.(item);
-      return;
-    }
-
-    onOverlapAttempt?.(null);
     onChange(
       items.map((i) => {
         if (i.id === item.id) return { ...i, start: safeStart };

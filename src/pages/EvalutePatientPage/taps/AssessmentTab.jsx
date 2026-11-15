@@ -23,7 +23,7 @@ export default function AssessmentTab({ page }) {
                         }
                     >
                         <option value="physiotherapy">Physiotherapy (PT)</option>
-                        <option value="sensory-perceptual">Neuro-Musculoskeletal (PT/OT)</option>
+                        <option value="sensory-perceptual">Occupational Therapy (OT)</option>
                     </select>
                 </div>
             )}

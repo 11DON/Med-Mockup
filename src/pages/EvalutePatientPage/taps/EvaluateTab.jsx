@@ -6,13 +6,12 @@ import styles from "./EvaluateTab.module.css";
 
 const evaluationAreas = [
   { id: "physiotherapy", label: "Physiotherapy (PT)", checked: true },
-  { id: "sensory-perceptual", label: "Sensory-Perceptual (OT)", checked: true },
-  { id: "speech-language", label: "Speech-Language Pathology (SLP)" },
+  { id: "occupational-therapy", label: "Occupational Therapy (OT)", checked: true },
+  { id: "speech-language-Pathology", label: "Speech-Language Pathology (SLP)" },
   { id: "occupational-therapy", label: "Occupational Therapy (OT)" },
   {
     id: "behavioral",
     label: "Behavioral, Emotional, & Social-Adaptive",
-    checked: true,
   },
   {
     id: "assistive-technology",

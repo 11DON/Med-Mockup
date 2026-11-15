@@ -4,13 +4,16 @@
     width: 100%;
     min-width: 0;
     box-sizing: border-box;
+    height: 100%;
 }
 
 .sectionTitle {
+    font-family: inherit;
     font-size: clamp(1.25rem, 3vw, 2rem);
     color: #4a90d9;
     margin: 10px 0;
     font-weight: normal;
+    line-height: 1.2;
 }
 
 .column {

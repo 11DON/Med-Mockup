@@ -11,6 +11,12 @@
   font: inherit;
 }
 
+.wideAssessmentDialog {
+  width: min(1000px, 85vw);
+  transform: scale(1.1);
+  font-family: Calibri, Arial, sans-serif;
+}
+
 .dialog::backdrop {
   background: rgb(20 40 65 / 45%);
 }

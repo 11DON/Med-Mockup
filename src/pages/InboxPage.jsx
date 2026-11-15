@@ -13,7 +13,6 @@ import styles from "./InboxPage.module.css";
 export default function InboxPage() {
   const { role } = useRole();
 
-  // only patients with a task assigned to this role
   const visible = patients.filter(
     (p) => p.type && p.type === roles[role]?.taskType
   );
@@ -53,11 +52,11 @@ export default function InboxPage() {
           </div>
         ) : (
           <Group orientation="horizontal" style={{ height: "auto" }}>
-            <Panel defaultSize="25%" minSize="18%" maxSize="50%">
+            <Panel defaultSize="40%" minSize="18%" maxSize="50%">
               {taskList}
             </Panel>
             <Separator className={styles.divider} />
-            <Panel minSize="40%">{details}</Panel>
+            <Panel minSize="60%">{details}</Panel>
           </Group>
         )}
       </div>
