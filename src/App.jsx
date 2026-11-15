@@ -1,10 +1,9 @@
-import { Routes, Route,useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { RoleProvider } from "./pages/PortalLayout/RoleContext.jsx";
 import PortalLayout from "./pages/PortalLayout/PortalLayout.jsx";
 import RolePage from "./pages/PortalLayout/RolePage.jsx";
 import LoginPage from "./pages/Login/loginPage.jsx";
 import ParentPortalPage, { ParentPortalHome } from "./pages/ParentPortal/ParentPortalPage.jsx";
-import MessageCenter from "./pages/ParentPortal/SidebarNav/MessageCenter.jsx";
 import InboxPage from "./pages/InboxPage.jsx";
 import SearchPatientPage from "./pages/searchPatient/SearchPatientPage.jsx";
 import PatientCardPage from "./pages/PatientCardPage/PatientCardPage.jsx";
@@ -13,16 +12,25 @@ import EvalutePatientRoute from "./pages/EvalutePatientPage/EvaluatePatientRoute
 import ViewSchedule from "./pages/ParentPortal/SidebarNav/ViewSchedule.jsx";
 import ProgressChart from "./pages/ParentPortal/SidebarNav/Progress.jsx";
 import MilestonesPage from "./pages/ParentPortal/SidebarNav/MileStones.jsx";
-
-function AddPatientInPortal(){
+import MessageCenter from "./pages/ParentPortal/SidebarNav/MessageCenter.jsx";
+import MessageList from "./pages/ParentPortal/SidebarNav/MessageList.jsx";
+import NewMessage from "./pages/ParentPortal/SidebarNav/NewMessage.jsx";
+import MessageThread from "./pages/ParentPortal/SidebarNav/MessageThread.jsx";
+import HomeExercise from "./pages/ParentPortal/SidebarNav/HomeExercise.jsx";
+import ActivityLogList from "./pages/ParentPortal/SidebarNav/ActivityLogList.jsx";
+import NewActivityLog from "./pages/ParentPortal/SidebarNav/NewActivityLog.jsx";
+import { ScheduleReviewProvider } from "./pages/ParentPortal/SidebarNav/ScheduleReviewContext.jsx";
+import ReviewSchedule from "./pages/ParentPortal/SidebarNav/ReviewSchedule.jsx";
+import FillScaleRequest from "./pages/ParentPortal/SidebarNav/FillScaleRequest.jsx";
+function AddPatientInPortal() {
   const navigate = useNavigate();
-  return(
+  return (
     <AddPatientPage
-    onCancel={()=> navigate("/parent-portal")}
-    onFinish={(patient)=> {
-      console.log("Patient",patient);
-      navigate("/parent-portal");
-    }}
+      onCancel={() => navigate("/parent-portal")}
+      onFinish={(patient) => {
+        console.log("Patient", patient);
+        navigate("/parent-portal");
+      }}
     />
   )
 }
@@ -30,17 +38,30 @@ function AddPatientInPortal(){
 export default function App() {
   return (
     <RoleProvider>
+            <ScheduleReviewProvider>
+
       <Routes>
         {/* entry pages: no header or sidebar */}
         <Route path="/" element={<LoginPage />} />
         <Route path="/roles" element={<RolePage />} />
         <Route path="/parent-portal" element={<ParentPortalPage />}>
           <Route index element={<ParentPortalHome />} />
-          <Route path="message-center" element={<MessageCenter />} />
+          <Route path="message-center" element={<MessageCenter />}>
+            <Route index element={<MessageList />} />
+            <Route path="new" element={<NewMessage />} />
+            <Route path=":id" element={<MessageThread />} />
+          </Route>
           <Route path="view-shedule" element={<ViewSchedule />} />
           <Route path="progress-chart" element={<ProgressChart />} />
           <Route path="milestones-page" element={<MilestonesPage />} />
           <Route path="add-patient" element={<AddPatientInPortal />} />
+          <Route path="home-exercise" element={<HomeExercise />}>
+            <Route index element={<ActivityLogList />} />
+            <Route path="new" element={<NewActivityLog />} />
+          </Route>
+            <Route path="review-schedule" element={<ReviewSchedule />} />   {/* new */}
+          <Route path="fill-scale-request" element={<FillScaleRequest />} />
+
         </Route>
 
         {/* everything else lives inside the portal layout */}
@@ -60,6 +81,8 @@ export default function App() {
           <Route path="/patients/:id/:tab/*" element={<EvalutePatientRoute />} />
         </Route>
       </Routes>
+            </ScheduleReviewProvider>
+
     </RoleProvider>
   );
 }

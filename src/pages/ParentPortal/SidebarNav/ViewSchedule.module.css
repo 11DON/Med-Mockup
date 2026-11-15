@@ -95,7 +95,8 @@
 .buttons {
   display: flex;
   justify-content: flex-end;   /* use flex-start or center to move it */
-  padding: 0 24px 24px;        /* lines up with .page's 24px side padding */
+  padding: 0 24px 24px;    
+  gap: 40px;    /* lines up with .page's 24px side padding */
 }
 
 .cancel {

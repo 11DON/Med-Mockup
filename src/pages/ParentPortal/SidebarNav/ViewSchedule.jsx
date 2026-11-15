@@ -17,7 +17,7 @@ const sessions = {
 
 const INFO = { therapist: "Amro Mahmoud", room: "Room 3", duration: "30 minutes", time: "10 AM to 10:30 AM" };
 
-export default function ViewSchedule() {
+export default function ViewSchedule({onCancel, actions}) {
   const [selected, setSelected] = useState("2026-11-19");
   const [view, setView] = useState({ y: 2026, m: 10 }); // month is 0-based: 10 = November
   const navigate = useNavigate();
@@ -91,6 +91,11 @@ export default function ViewSchedule() {
           Cancel
         </button>
       </div>
+      <div className={styles.buttons}>
+    {actions ?? (
+      <button type="button" className={styles.cancel} onClick={onCancel}>Cancel</button>
+    )}
+  </div>
      </div>
   );
 }

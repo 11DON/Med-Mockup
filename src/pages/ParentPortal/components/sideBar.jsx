@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
 import styles from "./sidebar.module.css";
 import { IdCard, Mail } from "lucide-react";
+
+import NotificationBell from "../SidebarNav/NotificationBell.jsx";
+
 const parentActions = ["Review Schedule", "Fill Scale Request"];
 const navigation = [
   { label: "View Schedule", to: "/parent-portal/view-shedule" },
@@ -8,7 +11,7 @@ const navigation = [
   { label: "Milestones" , to: "/parent-portal/milestones-page"},
 { label: "Add New Patient", to: "/parent-portal/add-patient" },
   { label: "Message Center", to: "/parent-portal/message-center" },
-  { label: "Home Exercise Program" },
+  { label: "Home Exercise Program", to: "/parent-portal/home-exercise" },
   { label: "Active Child" },
   { label: "FAQs" },
 ];
@@ -20,18 +23,7 @@ export default function Sidebar({ children }) {
         <h1 className={styles.title}>Parent Portal</h1>
         <div className={styles.account}>
           <div className={styles.headerIcons}>
-            <div className={styles.mailMenu}>
-              <button type="button" className={styles.iconButton} aria-label="Parent portal actions">
-                <Mail size={28} strokeWidth={1.5} aria-hidden="true" />
-              </button>
-              <div className={styles.menu} aria-label="Parent portal actions">
-                {parentActions.map((action) => (
-                  <button type="button" className={styles.menuItem} key={action}>
-                    {action}
-                  </button>
-                ))}
-              </div>
-            </div>
+            <NotificationBell />
             <button type="button" className={styles.iconButton} aria-label="Parent profile">
               <IdCard size={28} strokeWidth={1.5} aria-hidden="true" />
             </button>
@@ -50,13 +42,12 @@ export default function Sidebar({ children }) {
         <span className={styles.arabicName} lang="ar" dir="rtl">جنا محمد إسماعيل</span>
       </section>
 
-      <div className={styles.body}>
+        <div className={styles.body}>
         <nav className={styles.sidebar} aria-label="Parent portal navigation">
           {navigation.map(({ label, to }) => (
             to ? (
               <NavLink
                 to={to}
-                end
                 className={({ isActive }) =>
                   `${styles.navItem} ${isActive ? styles.active : ""}`
                 }
