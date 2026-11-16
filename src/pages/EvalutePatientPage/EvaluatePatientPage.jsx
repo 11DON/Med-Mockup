@@ -36,7 +36,7 @@ export default function EvalutePatientPage({
       }
     }
     setError("");
-    
+
     setSaving(true);
     try {
       await createPatient(form);
@@ -76,15 +76,15 @@ export default function EvalutePatientPage({
         {activeExtraKey !== "evaluate" &&
           activeExtraKey !== "physiotherapy" &&
           activeExtraKey !== "tasks" && (
-          <div className={styles.buttons}>
-            <button className={styles.cancel} onClick={onCancel} disabled={saving}>Send</button>
-            {!isExtra && (
-              <button className={styles.finish} onClick={save} disabled={saving}>
-                {saving ? "Saving..." : "Save"}
-              </button>
-            )}
-          </div>
-        )}
+            <div className={styles.buttons}>
+              <button className={styles.cancel} onClick={onCancel} disabled={saving}>Send</button>
+              {!isExtra && (
+                <button className={styles.finish} onClick={save} disabled={saving}>
+                  {saving ? "Saving..." : "Save"}
+                </button>
+              )}
+            </div>
+          )}
       </fieldset>
     </div>
   );

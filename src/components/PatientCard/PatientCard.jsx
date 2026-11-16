@@ -17,7 +17,7 @@ export default function PatientCard({ patient }) {
 ) : (
   <span className={styles.name}>{name}</span>
 )}
-        <p className={styles.nationality}>{patient?.nationalId || 'ID'}</p>
+        <p className={styles.nationality}>Egypt: {patient?.nationalId || 'ID'}</p>
         <div className={styles.row}>
           <p className={styles.age}>{patient?.birthDate || 'BirthDate'}</p>
           <p className={styles.gender}>{patient?.gender || 'Gender'}</p>

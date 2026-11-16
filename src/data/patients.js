@@ -1,21 +1,39 @@
+const janaPatient = {
+  patientId: "P-1001",
+  nameEn: "Jana Mohamed Ismail",
+  nameAr: "جنا محمد إسماعيل",
+  nationality: "Egypt",
+  nationalId: "1234567890123",
+  birthDate: "12/5/2023",
+  age: "3 years, 6 months",
+  gender: "Female",
+  avatar: "female.jpeg"
+};
+
 export const patients = [
   {
     id: 1,
     taskType: "Evaluate Patient",
     icon: "lookup.jpeg",
     urgent: false,
-    patient: {
-      patientId: "P-1001",
-      nameEn: "Jana Mohamed Ismail",
-      nameAr: "جنا محمد إسماعيل",
-      nationality: "Egypt",
-      nationalId: "1234567890123",
-      birthDate: "24/10/2018",
-      age: "8 years, 6 months",
-      gender: "Female",
-      avatar: "female.jpeg"
-    },
+    patient: janaPatient,
     type:"evaluate"
+  },
+  {
+    id: 5,
+    taskType: "Assess Patient",
+    icon: "todo.jpeg",
+    urgent: false,
+    patient: janaPatient,
+    type: "assess"
+  },
+  {
+    id: 6,
+    taskType: "Manage Tasks",
+    icon: "time.jpeg",
+    urgent: false,
+    patient: janaPatient,
+    type: "manage"
   },
   {
     id: 2,

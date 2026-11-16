@@ -9,7 +9,18 @@ export default function RolePage() {
 
   const pick = (key) => {
     chooseRole(key);
-    navigate(key === "Therapist" ? "/therapist-portal" : "/inbox");
+
+    if (key === "Therapist") {
+      navigate("/therapist-portal");
+      return;
+    }
+
+    if (key === "ExternalPhysician") {
+      navigate("/external-physician-portall");
+      return;
+    }
+
+    navigate("/inbox");
   };
 
   return (

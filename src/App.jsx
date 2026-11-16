@@ -24,6 +24,7 @@ import ReviewSchedule from "./pages/ParentPortal/SidebarNav/ReviewSchedule.jsx";
 import FillScaleRequest from "./pages/ParentPortal/SidebarNav/FillScaleRequest.jsx";
 import TherapistNav from "./pages/TherapistPortal/therapistNav.jsx";
 import TherapistSessionPage from "./pages/TherapistPortal/TherapistSessionPage.jsx";
+import ExternalPhysician from "./pages/ExternalPhysicianPortal/ExternalPhysician.jsx";
 function AddPatientInPortal() {
   const navigate = useNavigate();
   return (
@@ -89,6 +90,7 @@ export default function App() {
           <Route path="fill-scale-request" element={<FillScaleRequest />} />
 
         </Route>
+        <Route path="/external-physician-portall" element={<ExternalPhysician />} />
 
         {/* everything else lives inside the portal layout */}
         <Route element={<PortalLayout />}>
