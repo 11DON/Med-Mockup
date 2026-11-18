@@ -42,8 +42,6 @@ export default function InboxPage() {
 
   return (
     <>
-      <h1 className={styles.pageTitle}>Inbox</h1>
-
       <div className={styles.gridContainer}>
         {isMobile ? (
           <div className={styles.stacked}>

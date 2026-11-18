@@ -19,6 +19,7 @@ export default function PortalLayout() {
     end: true,
   });
   const isEvaluatePatientPage = useMatch("/patients/:id/:tab/*");
+  const isInboxPage = useMatch({ path: "/inbox", end: true });
   const hideSidebar = isPatientInfoPage || isEvaluatePatientPage;
 
   return (
@@ -37,6 +38,8 @@ export default function PortalLayout() {
           <small>Logged in as {roles[role].label}</small>
         </div>
       </header>
+
+      {isInboxPage && <h1 className={styles.pageTitle}>Inbox</h1>}
 
       <div className={`${styles.body} ${hideSidebar ? styles.bodyNoSidebar : ""}`}>
   {!hideSidebar && (
