@@ -11,7 +11,9 @@ export default function MainDataTab({ patient }) {
             <div>
                 <h2 className={styles.heading}>Address:</h2>
                 <Field label="Country" value={address.country} />
+                <br />
                 <Field label="Governorate" value={address.governorate} />
+                <br />
                 <Field label="Area" value={address.area} />
             </div>
             <div className={styles.school}>

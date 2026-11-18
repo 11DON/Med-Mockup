@@ -5,7 +5,7 @@
   color: #5b9bd5;
 }
 .form {
-  --field-label-width: 225px; /* wide enough for "National/Passport ID" */
+  --field-label-width: 225px; 
 }
 .identityGrid,
 .addressGrid {
