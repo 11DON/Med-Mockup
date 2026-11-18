@@ -21,9 +21,9 @@ export default function InboxPage() {
   const selected = visible.find((p) => p.id === selectedId);
   const isMobile = useIsMobile();
   const navigate = useNavigate();
-  const patientId = selected?.patient?.patientId;
-  const handleDetails = patientId
-    ? () => navigate(`/patients/${patientId}`)
+  const selectedTaskType = taskTypes[selected?.type];
+  const handleDetails = selected && selectedTaskType
+    ? () => navigate(selectedTaskType.path(selected))
     : undefined;
 
   const handleSelect = (id) => {

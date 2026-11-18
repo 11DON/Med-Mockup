@@ -20,6 +20,24 @@ export const patients = [
     type:"evaluate"
   },
   {
+    id: 7,
+    taskType: "Evaluate Patient",
+    icon: "lookup.jpeg",
+    urgent: false,
+    patient: {
+      patientId: "P-1002",
+      nameEn: "Ahmed Mostafa Nagy",
+      nameAr: "أحمد مصطفى ناجي",
+      nationality: "Egypt",
+      nationalId: "1234567890124",
+      birthDate: "15/08/2020",
+      age: "6 years, 2 months",
+      gender: "Male",
+      avatar: "male.jpeg"
+    },
+    type: "evaluate"
+  },
+  {
     id: 5,
     taskType: "Assess Patient",
     icon: "todo.jpeg",

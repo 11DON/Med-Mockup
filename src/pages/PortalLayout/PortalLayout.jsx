@@ -24,7 +24,7 @@ export default function PortalLayout() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <h1 className={styles.title}>{roles[role].label} Portal</h1>
+        <h1 className={styles.title}>Pediatric Rehabilitation Management System</h1>
 
         <div className={styles.user}>
           <div className={styles.icons}>
