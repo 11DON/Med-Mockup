@@ -55,26 +55,43 @@ export const initialPlan = {
 };
 
 export const taskCatalog = [
+    {
+    id: "ankle-walks",
+    title: "Ankle Mobility Walks",
+    description:
+      "The patient walks along a marked path using targeted ankle movements such as heel walking, toe walking, and walking on the inner and outer edges of the feet to improve ankle range of motion and control.",
+  },
+  {
+    id: "incline",
+    title: "Incline Board Play",
+    description:
+      "The patient stands or plays on an inclined board while completing simple activities such as reaching or catching, which gently stretches the calf muscles and challenges balance.",
+  },
   {
     id: "knight",
     title: "Knight Treasure Hunt",
-    description: "A gamified multi-step obstacle course where the patient follows sequential clues to locate hidden tokens while maintaining stability over uneven surfaces.",
+    description:
+      "A gamified multi-step obstacle course where the patient follows sequential clues to locate hidden tokens while maintaining stability over uneven surfaces.",
   },
   {
     id: "bench",
     title: "Bench Push-to-Stand",
-    description: "The patient transitions from a seated position on a backless bench to a fully upright standing position, using their upper extremities on the bench for initial leverage.",
+    description:
+      "The patient transitions from a seated position on a backless bench to a fully upright standing position, using their upper extremities on the bench for initial leverage.",
   },
   {
     id: "balloon",
     title: "Balloon Tap",
-    description: "The patient uses their hands, feet, or an implement to repeatedly tap a balloon into the air, preventing it from touching the ground.",
+    description:
+      "The patient uses their hands, feet, or an implement to repeatedly tap a balloon into the air, preventing it from touching the ground.",
   },
   {
     id: "toys",
     title: "High-Low Toy Sorting",
-    description: "The patient categorizes and places objects onto shelves or targets placed at alternating high and low vertical planes.",
+    description:
+      "The patient categorizes and places objects onto shelves or targets placed at alternating high and low vertical planes.",
   },
+
 ];
 
 export const suggestedActivities = [
@@ -120,8 +137,8 @@ export const initialObservations = [
 
 const defaultGoalDetails = [
   "Duration: 4 weeks.",
-  "Baseline: walks with assistance and needs support on uneven surfaces.",
-  "Criteria: walk across 30 centimeters of uneven surface with a normalized heel-toe pattern.",
+  // "Baseline: walks with assistance and needs support on uneven surfaces.",
+  // "Criteria: walk across 30 centimeters of uneven surface with a normalized heel-toe pattern.",
   "Full Description: Jana will demonstrate independent functional mobility for 30 feet with minimal assistance and no falls in 3 consecutive sessions.",
 ];
 

@@ -11,7 +11,7 @@ import DetailsPanel from "../components/DetailsPanel/DetailsPanel.jsx";
 import styles from "./InboxPage.module.css";
 
 export default function InboxPage() {
-  const { role } = useRole();
+  const { role, logout } = useRole();
 
   const visible = patients.filter(
     (p) => p.type && p.type === roles[role]?.taskType
@@ -58,6 +58,16 @@ export default function InboxPage() {
           </Group>
         )}
       </div>
+      <button
+        type="button"
+        className={styles.logoutButton}
+        onClick={() => {
+          logout();
+          navigate("/");
+        }}
+      >
+        Logout
+      </button>
     </>
   );
 }

@@ -145,17 +145,27 @@
   grid-template-columns: 1fr 1.1fr;
   gap: 12px;
 }
-
 .list,
 .params {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  min-height: 200px;
 }
 
 .params {
   gap: 10px;
+  min-height: 200px;
+}
+
+.list {
+  height: 360px;          /* fixed height, so the modal can't grow with the list */
+  min-height: 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.list > * {
+  flex: 0 0 auto;         /* cards keep their natural height and the list scrolls */
 }
 
 /* ---------- cards ---------- */

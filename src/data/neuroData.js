@@ -116,6 +116,18 @@ export const initialGoals = [
 ];
 
 export const taskCatalog = [
+    {
+    id: "ankle-walks",
+    title: "Ankle Mobility Walks",
+    description:
+      "The patient walks along a marked path using targeted ankle movements such as heel walking, toe walking, and walking on the inner and outer edges of the feet to improve ankle range of motion and control.",
+  },
+  {
+    id: "incline",
+    title: "Incline Board Play",
+    description:
+      "The patient stands or plays on an inclined board while completing simple activities such as reaching or catching, which gently stretches the calf muscles and challenges balance.",
+  },
   {
     id: "knight",
     title: "Knight Treasure Hunt",
@@ -140,6 +152,7 @@ export const taskCatalog = [
     description:
       "The patient categorizes and places objects onto shelves or targets placed at alternating high and low vertical planes.",
   },
+
 ];
 
 const defaultActivityDetails = {

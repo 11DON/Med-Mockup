@@ -5,7 +5,11 @@ import RichText from "./RichText.jsx";
 import PlanModal from "../../scales/modals/planModal.jsx";
 import { initialPlan } from "../../../../../data/Physiotherapydata.js";
 
-export default function PlanSection({ plan: controlledPlan, onPlanChange }) {
+export default function PlanSection({
+  plan: controlledPlan,
+  onPlanChange,
+  modalScale = 1,
+}) {
   const [localPlan, setLocalPlan] = useState(initialPlan);
   const [isOpen, setIsOpen] = useState(false);
   const plan = controlledPlan ?? localPlan;
@@ -49,6 +53,7 @@ export default function PlanSection({ plan: controlledPlan, onPlanChange }) {
       {isOpen && (
         <PlanModal
           plan={plan}
+          modalScale={modalScale}
           onCancel={() => setIsOpen(false)}
           onSave={(newPlan) => {
             updatePlan(newPlan);

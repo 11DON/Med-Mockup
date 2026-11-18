@@ -1,7 +1,8 @@
-import PatientCard from "../PatientCard/PatientCard.jsx";
 import styles from './DetailsPanel.module.css';
-import { sendPatientEmail } from '../Buttons/sendEmail';
+import { useNavigate } from "react-router-dom";
 export default function DetailsPanel({ patient, onDetails }) {
+      const navigate = useNavigate();
+
     if (!patient) {
         return (
             <section className={styles.panel}>
@@ -34,7 +35,7 @@ export default function DetailsPanel({ patient, onDetails }) {
                     </div>
                 </div>
                 <div className={styles.actions}>
-                    <button className={`${styles.btn} ${styles.btnSend}`} onClick={()=>sendPatientEmail(patient)}>Send</button>
+                    <button className={`${styles.btn} ${styles.btnSend}`} onClick={() => navigate("/")}>Send</button>
                     <button className={`${styles.btn} ${styles.btnDetails}`} onClick={onDetails}>
                         Details
                     </button>

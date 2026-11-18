@@ -32,17 +32,7 @@ export default function ExternalPhysician() {
           <small>Logged in as External Physician</small>
         </div>
       </header>
-      {activeTab === "addMedication" && (<section className={styles.patient} aria-label="Active child">
-                <img src="/images/female.jpeg" alt="" className={styles.avatar} />
 
-                <div className={styles.patientInfo}>
-                    <span className={styles.patientName}>Jana Mohamed Ismail</span>
-                    <span className={styles.age}>Age: 3 years, 6 months</span>
-                </div>
-
-                <span className={styles.gender}>Gender: Female</span>
-                <span className={styles.arabicName} lang="ar" dir="rtl">جنا محمد إسماعيل</span>
-            </section>)}
            
 
       <div className={styles.body}>

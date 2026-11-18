@@ -26,3 +26,26 @@
     outline: none;
     z-index: 1;               
 }
+
+.logoutButton {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 20;
+    padding: 8px 18px;
+    border: 1px solid #a32020;
+    border-radius: 4px;
+    background: #c62828;
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+}
+
+.logoutButton:hover {
+    background: #a32020;
+}
+
+.logoutButton:focus-visible {
+    outline: 2px solid #4a1010;
+    outline-offset: 2px;
+}

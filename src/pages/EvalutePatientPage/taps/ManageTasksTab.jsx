@@ -6,7 +6,7 @@ import { useRole } from "../../PortalLayout/RoleContext.jsx";
 import styles from "./ManageTasksTab.module.css";
 import ScheduleModal from "./scales/modals/ViewSheduleModal.jsx";
 import { initialPlan } from "../../../data/Physiotherapydata.js";
-
+import { useNavigate } from "react-router-dom";
 const TOTAL_SCHEDULE_WEEKS = 18;
 const THERAPISTS = ["Amro Mahmoud"];
 
@@ -20,6 +20,7 @@ export default function ManageTasksTab({ page }) {
   const [plan, setPlan] = useState(initialPlan);
   const { role } = useRole();
   const [showSchedule, setShowSchedule] = useState(false);
+  const navigate = useNavigate();
 
   const updateSchedule = (items) => {
     setSchedule(items);
@@ -63,15 +64,16 @@ export default function ManageTasksTab({ page }) {
                 <option key={name} value={name}>{name}</option>
               ))}
             </select>
-          </div>         
+          </div>
         </div>
       )}
 
-      <PlanSection plan={plan} onPlanChange={setPlan} />
+      <PlanSection plan={plan} onPlanChange={setPlan}modalScale={1.75}  />
       <GoalsSection
         scheduleItems={schedule}
         onScheduleChange={updateSchedule}
         totalWeeks={TOTAL_SCHEDULE_WEEKS}
+        showManagementActions={false}
       />
       <ScheduleTimeline
         items={schedule}
@@ -79,8 +81,9 @@ export default function ManageTasksTab({ page }) {
         totalWeeks={TOTAL_SCHEDULE_WEEKS}
       />
       <div className={styles.actions}>
-        <button type="button" className={styles.send}>Send</button>
-        <button type="button" className={styles.viewSchedule} onClick={() => setShowSchedule(true)}>View Schedule</button>
+        <button type="button" className={styles.send} onClick={() => navigate("/")}>
+          Send
+        </button>        <button type="button" className={styles.viewSchedule} onClick={() => setShowSchedule(true)}>View Schedule</button>
       </div>
       <ScheduleModal
         open={showSchedule}

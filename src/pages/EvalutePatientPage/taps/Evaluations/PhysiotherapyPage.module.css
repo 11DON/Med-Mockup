@@ -158,8 +158,9 @@
 
 .sectionHeader h2 {
   margin: 0;
-  font-size: calc(15px * var(--font-scale, 1));
+  font-size: calc(15px * var(--font-scale, 1.1));
   font-weight: 400;
+  color:#173a69
 }
 
 .addButton {
@@ -192,7 +193,7 @@
 .goalDetail h3,
 .exerciseLayout h3 {
   margin: 0 0 4px;
-  font-size: calc(12px * var(--font-scale, 1));
+  font-size: calc(12px * var(--font-scale, 1.2));
   font-weight: 400;
 }
 
@@ -223,6 +224,7 @@
 }
 
 .observation {
+  
   min-height: 55px;
   padding: 5px 7px;
   border: 1px solid #b1d1ec;

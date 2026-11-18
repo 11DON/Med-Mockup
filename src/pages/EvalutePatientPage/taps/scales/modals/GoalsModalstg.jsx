@@ -50,43 +50,40 @@ const PARAMETERS = [
 const TEMPLATE =
   "In [TIMEFRAME], Child will ambulate [ASSISTANCE_LEVEL] on [SURFACE_TYPE] surfaces for [DISTANCE_VALUE] [DISTANCE_UNIT] with a [GAIT_PATTERN] and [SAFETY_CRITERIA] in [SUCCESS_RATE] sessions.";
 
-const fillTemplate = (template, params) =>
-  template.replace(/\[(\w+)\]/g, (_, key) => params[key] ?? `[${key}]`);
+// Each parameter starts as its own key name (e.g. "TIMEFRAME"), meaning "not set yet".
+// Number fields can't hold text, so they start empty and show the key as a placeholder.
+const initialParams = () =>
+  Object.fromEntries(
+    PARAMETERS.map(({ key, type }) => [key, type === "number" ? "" : key]),
+  );
 
 export default function GoalsModalstg({ parentGoals, onSave, onCancel }) {
   const [form, setForm] = useState({
-    title: "Independent Mobility",
+    title: "Static Standing Balance",
     parentGoal: parentGoals[0] ?? "",
     category: "Gait & Ambulation",
     skill: CATEGORY_SKILLS["Gait & Ambulation"][0],
   });
-  const [params, setParams] = useState({
-    ASSISTANCE_LEVEL: "independently",
-    SURFACE_TYPE: "level indoor",
-    DISTANCE_VALUE: 30,
-    DISTANCE_UNIT: "feet",
-    GAIT_PATTERN: "normalized heel-strike pattern",
-    SAFETY_CRITERIA: "no falls",
-    SUCCESS_RATE: "3 consecutive",
-    TIMEFRAME: "12 weeks",
-  });
-  const [changedParams, setChangedParams] = useState(() => new Set());
+  const [params, setParams] = useState(initialParams);
+
+  const isSet = (key) => params[key] !== "" && params[key] !== key;
 
   const setField = (name, value) =>
     setForm((current) => ({ ...current, [name]: value }));
-  const setParam = (name, value) => {
+  const setParam = (name, value) =>
     setParams((current) => ({ ...current, [name]: value }));
-    setChangedParams((current) => new Set(current).add(name));
-  };
-  const templatePreview = TEMPLATE.replace(/\[(\w+)\]/g, (_, key) =>
-    changedParams.has(key) ? params[key] : `[${key}]`,
-  );
+
+  const buildDescription = () =>
+    TEMPLATE.replace(/\[(\w+)\]/g, (_, key) =>
+      isSet(key) ? params[key] : `[${key}]`,
+    );
+
   const save = () =>
     onSave({
       ...form,
       parentIndex: parentGoals.indexOf(form.parentGoal),
-      timeframe: params.TIMEFRAME,
-      description: fillTemplate(TEMPLATE, params),
+      timeframe: isSet("TIMEFRAME") ? params.TIMEFRAME : "",
+      description: buildDescription(),
     });
 
   return (
@@ -127,7 +124,7 @@ export default function GoalsModalstg({ parentGoals, onSave, onCancel }) {
 
       <section>
         <h4 className={styles.sectionTitle}>Template:</h4>
-        <div className={`${styles.box} ${styles.template}`}>{templatePreview}</div>
+        <div className={`${styles.box} ${styles.template}`}>{buildDescription()}</div>
       </section>
 
       <section>
@@ -138,8 +135,9 @@ export default function GoalsModalstg({ parentGoals, onSave, onCancel }) {
               key={key}
               label={label}
               value={params[key]}
-              options={options}
+              options={options ? [key, ...options] : undefined}
               type={type}
+              placeholder={key}
               onChange={(value) => setParam(key, value)}
             />
           ))}

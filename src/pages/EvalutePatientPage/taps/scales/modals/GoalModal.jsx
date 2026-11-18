@@ -4,6 +4,8 @@ import styles from "./modalShared.module.css";
 
 const range = (n) => Array.from({ length: n }, (_, i) => i + 1);
 
+const PARENT_GOAL_PLACEHOLDER = "<long term goal>";
+
 const TEMPLATE =
   "By [TIMEFRAME], the child will maintain [POSTURE] with a [CONDITION] for [DURATION] seconds [ASSISTANCE], in [SUCCESS_TRIALS] out of [TOTAL_TRIALS] trials.";
 
@@ -25,9 +27,12 @@ const PARAMS = [
   { key: "TIMEFRAME", label: "Timeframe", options: ["4 weeks", "6 weeks", "8 weeks", "12 weeks"] },
 ];
 
-// "[POSTURE]" -> params.POSTURE
-const fillTemplate = (template, params) =>
-  template.replace(/\[(\w+)\]/g, (_, key) => params[key] ?? `[${key}]`);
+// Each parameter starts as its own key name (e.g. "TIMEFRAME"), meaning "not set yet".
+// Number fields can't hold text, so they start empty and show the key as a placeholder.
+const initialParams = () =>
+  Object.fromEntries(
+    PARAMS.map(({ key, type }) => [key, type === "number" ? "" : key]),
+  );
 
 /**
  * parentGoals: ["LTG 1: Independent Mobility ...", ...]
@@ -35,37 +40,27 @@ const fillTemplate = (template, params) =>
  */
 export default function GoalModal({ parentGoals, onSave, onCancel }) {
   const [form, setForm] = useState({
-    title: "",
-    parentGoal: parentGoals[0] ?? "",
+    title: "Independent Mobility",
+    parentGoal: PARENT_GOAL_PLACEHOLDER,
     category: "Gait & Ambulation",
     skill: CATEGORY_SKILLS["Gait & Ambulation"][0],
   });
-  const [params, setParams] = useState({
-    POSTURE: PARAMS[0].options[0],
-    CONDITION: PARAMS[1].options[0],
-    DURATION: "10",
-    ASSISTANCE: PARAMS[3].options[0],
-    SUCCESS_TRIALS: 3,
-    TOTAL_TRIALS: 3,
-    TIMEFRAME: "8 weeks",
-  });
-  const [changedParams, setChangedParams] = useState(() => new Set());
+  const [params, setParams] = useState(initialParams);
+
+  const isSet = (key) => params[key] !== "" && params[key] !== key;
 
   const setField = (name, value) => setForm((current) => ({ ...current, [name]: value }));
-  const setParam = (name, value) => {
-    setParams((current) => ({ ...current, [name]: value }));
-    setChangedParams((current) => new Set(current).add(name));
-  };
-  const templatePreview = TEMPLATE.replace(/\[(\w+)\]/g, (_, key) =>
-    changedParams.has(key) ? params[key] : `[${key}]`,
-  );
+  const setParam = (name, value) => setParams((current) => ({ ...current, [name]: value }));
+
+  const buildDescription = () =>
+    TEMPLATE.replace(/\[(\w+)\]/g, (_, key) => (isSet(key) ? params[key] : `[${key}]`));
 
   const save = () =>
     onSave({
       ...form,
       parentIndex: parentGoals.indexOf(form.parentGoal),
-      timeframe: params.TIMEFRAME,
-      description: fillTemplate(TEMPLATE, params),
+      timeframe: isSet("TIMEFRAME") ? params.TIMEFRAME : "",
+      description: buildDescription(),
     });
 
   return (
@@ -95,16 +90,14 @@ export default function GoalModal({ parentGoals, onSave, onCancel }) {
         <Field
           label="Parent Goal"
           value={form.parentGoal}
-          options={parentGoals}
+          options={[PARENT_GOAL_PLACEHOLDER, ...parentGoals]}
           onChange={(v) => setField("parentGoal", v)}
         />
       </div>
 
       <section>
         <h4 className={styles.sectionTitle}>Template:</h4>
-        <div className={`${styles.box} ${styles.template}`}>
-          {templatePreview}
-        </div>
+        <div className={`${styles.box} ${styles.template}`}>{buildDescription()}</div>
       </section>
 
       <section>
@@ -115,8 +108,9 @@ export default function GoalModal({ parentGoals, onSave, onCancel }) {
               key={key}
               label={label}
               value={params[key]}
-              options={options}
+              options={options ? [key, ...options] : undefined}
               type={type}
+              placeholder={key}
               onChange={(value) => setParam(key, value)}
             />
           ))}

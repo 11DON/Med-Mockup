@@ -5,18 +5,10 @@ import { sendPatientEmail } from "../../../components/Buttons/sendEmail.js";
 import styles from "./EvaluateTab.module.css";
 
 const evaluationAreas = [
-  { id: "physiotherapy", label: "Physiotherapy (PT)", checked: true },
-  { id: "occupational-therapy", label: "Occupational Therapy (OT)", checked: true },
-  { id: "speech-language-Pathology", label: "Speech-Language Pathology (SLP)" },
-  { id: "occupational-therapy", label: "Occupational Therapy (OT)" },
-  {
-    id: "behavioral",
-    label: "Behavioral, Emotional, & Social-Adaptive",
-  },
-  {
-    id: "assistive-technology",
-    label: "Assistive Technology & Environmental Module",
-  },
+  { id: "physiotherapy", label: "Physiotherapy", checked: true },
+  { id: "occupational-therapy", label: "Occupational Therapy", checked: false },
+  { id: "special-educational-therapy", label: "Special Educational Therapy" },
+  { id: "speech-language-pathology", label: "Speech Language Pathology" },
 ];
 
 export default function EvaluateTab({ patient }) {

@@ -12,9 +12,13 @@ const [role, setRole] = useState(() => {
     sessionStorage.setItem("role", r);
     setRole(r);
   };
+  const logout = () => {
+    sessionStorage.removeItem("role");
+    setRole(null);
+  };
 
   return (
-    <RoleContext.Provider value={{ role, chooseRole }}>
+    <RoleContext.Provider value={{ role, chooseRole, logout }}>
       {children}
     </RoleContext.Provider>
   );

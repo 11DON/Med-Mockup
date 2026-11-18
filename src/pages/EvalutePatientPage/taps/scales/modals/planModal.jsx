@@ -21,27 +21,37 @@ const modules = {
   ],
 };
 
-const range = (n) => Array.from({length:n}, (_,i)=> i+1);
+const range = (n) => Array.from({ length: n }, (_, i) => i + 1);
 
-function Select ({value,onChange,options}){
-    return (
-        <select className={styles.select} value={value} onChange={(e) => onChange(e.target.value)}>
-        {options.map((option)=> (
-            <option key={option} value={option} >{option}</option>
-        ))}
-        </select>
-    )
+function Select({ value, onChange, options }) {
+  return (
+    <select className={styles.select} value={value} onChange={(e) => onChange(e.target.value)}>
+      {options.map((option) => (
+        <option key={option} value={option} >{option}</option>
+      ))}
+    </select>
+  )
 }
 
-export default function PlanModal({ plan, onSave, onCancel }) {
-    const [values,setValues] = useState(plan);
-    const set = (name,value) => setValues((current)=> ({...current,[name]:value}));
+export default function PlanModal({
+  plan,
+  onSave,
+  onCancel,
+  modalScale = 1,
+}) {
+  const [values, setValues] = useState(plan);
+const set = (name, value) => setValues((current) => ({ ...current, [name]: value }));
+  const modalClassNames = [
+    styles.modal,
+    modalScale !== 1 && styles.assessmentSize,
+  ].filter(Boolean);
+  const modalClassName = modalClassNames.join(" ");
+const modalStyle =
+  modalScale !== 1 ? { zoom: modalScale, "--font-scale": 1 } : undefined;
+  return (
+    <div className={styles.overlay}>
+    <div className={styles.modal} style={modalStyle} role="dialog" aria-label="Edit Plan">        <header className={styles.header}>Edit Plan</header>
 
-    return (
-         <div className={styles.overlay}>
-      <div className={styles.modal} role="dialog" aria-label="Edit Plan">
-        <header className={styles.header}>Edit Plan</header>
- 
         <div className={styles.body}>
           <div className={styles.row}>
             <label>Frequency:</label>
@@ -57,7 +67,7 @@ export default function PlanModal({ plan, onSave, onCancel }) {
               onChange={(v) => set("frequencyUnit", v)}
             />
           </div>
- 
+
           <div className={styles.row}>
             <label>Duration:</label>
             <Select
@@ -71,7 +81,7 @@ export default function PlanModal({ plan, onSave, onCancel }) {
               onChange={(v) => set("durationUnit", v)}
             />
           </div>
- 
+
           <div className={styles.row}>
             <label>Diagnosis:</label>
             <div className={styles.search}>
@@ -82,7 +92,7 @@ export default function PlanModal({ plan, onSave, onCancel }) {
               <span aria-hidden="true">🔍</span>
             </div>
           </div>
- 
+
           <label className={styles.editorLabel}>Interventions</label>
           <ReactQuill
             className={styles.editor}
@@ -92,12 +102,12 @@ export default function PlanModal({ plan, onSave, onCancel }) {
             onChange={(html) => set("interventions", html)}
           />
         </div>
- 
+
         <footer className={styles.footer}>
           <button type="button" className={styles.cancel} onClick={onCancel}>Cancel</button>
           <button type="button" className={styles.save} onClick={() => onSave(values)}>Save</button>
         </footer>
       </div>
     </div>
-    )
+  )
 }
