@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink,useLocation  } from "react-router-dom";
 import styles from "./sidebar.module.css";
 import { IdCard, Mail } from "lucide-react";
 
@@ -16,6 +16,8 @@ const navigation = [
 ];
 
 export default function Sidebar({ children }) {
+  const { pathname } = useLocation();
+  const isAddPatientPage = pathname === "/parent-portal/add-patient";
   return (
     <div className={styles.portalShell}>
       <header className={styles.header}>
@@ -31,15 +33,18 @@ export default function Sidebar({ children }) {
         </div>
       </header>
 
-      <section className={styles.patient} aria-label="Active child">
-        <img src="/images/female.jpeg" alt="" className={styles.avatar} />
-        <div className={styles.patientInfo}>
-          <span className={styles.patientName}>Jana Mohamed Ismail</span>
-          <span className={styles.age}>Age: 3 years, 6 months</span>
-        </div>
-        <span className={styles.gender}>Gender: Female</span>
-        <span className={styles.arabicName} lang="ar" dir="rtl">جنا محمد إسماعيل</span>
-      </section>
+      {!isAddPatientPage && (
+        <section className={styles.patient} aria-label="Active child">
+          <img src="/images/female.jpeg" alt="" className={styles.avatar} />
+          <div className={styles.patientInfo}>
+            <span className={styles.patientName}>Jana Mohamed Ismail</span>
+            <span className={styles.age}>Age: 3 years, 6 months</span>
+          </div>
+          <span className={styles.gender}>Gender: Female</span>
+          <span className={styles.arabicName} lang="ar" dir="rtl">جنا محمد إسماعيل</span>
+        </section>
+      )}
+
 
         <div className={styles.body}>
         <nav className={styles.sidebar} aria-label="Parent portal navigation">

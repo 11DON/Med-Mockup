@@ -159,8 +159,8 @@
 .sectionHeader h2 {
   margin: 0;
   font-size: calc(15px * var(--font-scale, 1.1));
-  font-weight: 400;
-  color:#173a69
+  font-weight: 600;
+  color:#75169a
 }
 
 .addButton {

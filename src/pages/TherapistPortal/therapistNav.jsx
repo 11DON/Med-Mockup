@@ -1,5 +1,5 @@
 import { IdCard, Mail } from "lucide-react";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet, useLocation,useNavigate  } from "react-router-dom";
 import styles from "./TherapistNav.module.css";
 
 const navigation = [
@@ -10,6 +10,7 @@ const navigation = [
 
 export default function TherapistNav() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   return (
     <div className={styles.portalShell}>
@@ -54,6 +55,15 @@ export default function TherapistNav() {
         <main className={styles.content}>
           <Outlet />
         </main>
+      </div>
+      <div className={styles.bottomBar}>
+        <button
+          type="button"
+          className={styles.logout}
+          onClick={() => navigate("/")}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );

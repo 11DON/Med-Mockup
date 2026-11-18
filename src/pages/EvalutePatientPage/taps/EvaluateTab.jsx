@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRole } from "../../PortalLayout/RoleContext.jsx";
-import { sendPatientEmail } from "../../../components/Buttons/sendEmail.js";
 import styles from "./EvaluateTab.module.css";
 
 const evaluationAreas = [
@@ -80,7 +79,7 @@ export default function EvaluateTab({ patient }) {
         <button
           type="button"
           className={styles.send}
-          onClick={() => sendPatientEmail(patient)}
+          onClick={()=>navigate("/")}
         >
           Send
         </button>

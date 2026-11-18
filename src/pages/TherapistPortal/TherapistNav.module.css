@@ -143,3 +143,20 @@
     gap: 12px 18px;
   }
 }
+
+.bottomBar {
+  display: flex;
+  justify-content: flex-start;
+  padding: 12px 0 18px;
+}
+
+.logout {
+  padding: 8px 20px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  background: #c00000;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+

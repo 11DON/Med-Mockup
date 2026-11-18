@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import styles from "./ExternalPhysician.module.css";
 import { Mail, Menu } from "lucide-react";
 import AddPatientForm from "./Nav/AddNewPatient.jsx"
@@ -14,7 +16,7 @@ const navItems = [
 
 export default function ExternalPhysician() {
   const [activeTab, setActiveTab] = useState("addPatient");
-
+  const navigate = useNavigate();
   return (
     <div className={styles.portalShell}>
       <header className={styles.header}>
@@ -52,6 +54,15 @@ export default function ExternalPhysician() {
         <main className={styles.content}>
           {activeTab === "addPatient" ? <AddPatientForm /> : <AddMedicationForm />}
         </main>
+      </div>
+       <div className={styles.bottomBar}>
+        <button
+          type="button"
+          className={styles.logout}
+          onClick={() => navigate("/")}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
