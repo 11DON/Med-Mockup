@@ -140,7 +140,10 @@
   color: #4a7ebb;
   background: #fff;
 }
-
+.bubbleClinic {
+  background: #eeeeee;
+  border-color: #9aa5b1;
+}
 .root {
   font-size: 125%;
   padding-top: 20px;

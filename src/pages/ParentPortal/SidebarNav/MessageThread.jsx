@@ -18,7 +18,11 @@ export default function MessageThread() {
       {thread.messages.map((m) => (
         <div key={m.id} className={m.from === "me" ? styles.rowMe : styles.rowClinic}>
           <div className={styles.meta}><b>{m.name}</b> {m.at}</div>
-          <div className={styles.bubble}>{m.text}</div>
+          <div
+  className={`${styles.bubble} ${m.from === "me" ? "" : styles.bubbleClinic}`}
+>
+  {m.text}
+</div>
         </div>
       ))}
     </div>
