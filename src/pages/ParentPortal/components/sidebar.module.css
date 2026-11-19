@@ -1,0 +1,277 @@
+.portalShell {
+  width: 100%;
+  min-height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  box-sizing: border-box;
+  display: flex;
+  height: 72px;
+  min-height: 72px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: #f1f1f1;
+}
+
+.title {
+  margin: 0;
+  color: #5b9bd5;
+  font-size: 32px;
+  font-style: italic;
+}
+
+.account {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #5b9bd5;
+}
+
+.account small {
+  font-size: 14px;
+}
+
+.headerIcons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mailMenu {
+  position: relative;
+}
+
+.iconButton {
+  display: grid;
+  width: 32px;
+  height: 28px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #4a90d9;
+  font: inherit;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.iconButton:focus-visible,
+.menuItem:focus-visible,
+.navItem:focus-visible {
+  outline: 2px solid #1f4e8c;
+  outline-offset: 2px;
+}
+
+.profileIcon {
+  display: flex;
+  width: 27px;
+  height: 20px;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid #4a90d9;
+}
+
+.profileIcon span:first-child {
+  width: 8px;
+  height: 8px;
+  border: 1px solid #4a90d9;
+  border-radius: 50%;
+}
+
+.profileIcon span:last-child {
+  width: 9px;
+  height: 7px;
+  border: 1px solid #4a90d9;
+}
+
+.menu {
+  position: absolute;
+  z-index: 2;
+  top: 100%;
+  right: 0;
+  display: grid;
+  min-width: 190px;
+  padding: 6px;
+  border: 1px solid #a6c8ed;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 4px 12px #0002;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease, visibility 120ms ease;
+  visibility: hidden;
+}
+
+.mailMenu:hover .menu,
+.mailMenu:focus-within .menu {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.menuItem {
+  padding: 10px 12px;
+  border: 0;
+  background: transparent;
+  color: #5b9bd5;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background: #e8f2fb;
+}
+
+.patient {
+  box-sizing: border-box;
+  display: grid;
+  height: 84px;
+  min-height: 84px;
+  grid-template-columns: 80px minmax(250px, 1fr) 1fr 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 12px;
+  border: 1px solid #5b9bd5;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.patientInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.patientName {
+  color: #5b9bd5;
+  font-size: 32px;
+}
+
+.age {
+  color: #c00000;
+  font-size: 17px;
+}
+
+.gender {
+  justify-self: center;
+  color: #c55a11;
+  font-size: 17px;
+}
+
+.arabicName {
+  justify-self: end;
+  color: #5b9bd5;
+  font-size: 28px;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  gap:30px;
+  margin-top: 18px;
+}
+
+.sidebar {
+  box-sizing: border-box;
+  flex: 0 0 230px;
+  min-height: 0;
+  padding: 12px 16px;
+  border: 1px solid #5b9bd5;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.navItem {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #5b9bd5;
+  font: inherit;
+  font-size: 18px;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.active {
+  color: #c00000;
+}
+
+.content {
+  min-width: 0;
+  flex: 1;
+  padding: 24px 40px 24px 0;
+}
+
+@media (max-width: 640px) {
+  .portalShell {
+    min-height: calc(100vh - 24px);
+  }
+
+  .header {
+    height: 60px;
+    min-height: 60px;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+
+  .patient {
+    height: auto;
+    min-height: 84px;
+    grid-template-columns: 54px 1fr;
+    padding: 8px;
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .patientName {
+    font-size: 22px;
+  }
+
+  .gender {
+    justify-self: start;
+    grid-column: 2;
+  }
+
+  .arabicName {
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: start;
+  }
+
+  .body {
+    flex-direction: column;
+    gap: 16px;
+    flex: initial;
+  }
+
+  .sidebar {
+    min-height: auto;
+    flex-basis: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+  }
+
+  .content {
+    padding: 8px 0 16px;
+  }
+}

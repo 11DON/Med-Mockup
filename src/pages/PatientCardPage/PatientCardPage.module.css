@@ -1,0 +1,141 @@
+.page {
+    color: #5b9bd5;
+    font-family: Calibri, Arial, sans-serif;
+}
+
+.title {
+    margin: 8px 0 2px;
+    padding: 9px 4px;
+    background: #f0f0f0;
+    color: #5b9bd5;
+    font-size: 1.4rem;
+    font-style: italic;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+    min-height: 84px;
+    padding: 6px 14px;
+    border: 1px solid #a6c8ed;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.face {
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    column-gap: 12px;
+    min-width: 0;
+}
+
+.name {
+    grid-column: 1;
+    margin: 0 0 4px;
+    color: #5b9bd5;
+    font-size: 1.4rem;
+}
+
+.arabicName {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0 10px 4px 0;
+    color: #5b9bd5;
+    font-size: 1.25rem;
+    text-align: right;
+}
+
+.nationality,
+.nationalId,
+.birthDate,
+.age,
+.gender {
+    margin: 0 0 3px;
+    font-size: 0.85rem;
+}
+
+.nationality,
+.nationalId {
+    color: #00a34a;
+}
+
+.birthDate,
+.age {
+    color: #c00;
+}
+
+.gender {
+    color: #bf9000;
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 4px;
+    margin: 14px 0 0 8px;
+}
+
+.tab {
+    padding: 1px 6px;
+    border: 1px solid #4a90d9;
+    border-bottom: 0;
+    background: #3184c5;
+    color: #fff;
+    font: inherit;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.tab[aria-selected="true"] {
+    background: #fff;
+    color: #000;
+}
+
+.tab:focus-visible {
+    outline: 2px solid #1f4e8c;
+    outline-offset: 2px;
+}
+
+.panel {
+    min-height: 300px;
+    padding: 18px 24px;
+    border: 1px solid #a6c8ed;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+@media (max-width: 560px) {
+    .info {
+        grid-template-columns: 1fr;
+    }
+
+    .arabicName {
+        grid-column: 1;
+        grid-row: auto;
+        margin-right: 0;
+        text-align: left;
+    }
+
+    .nationality,
+    .nationalId,
+    .birthDate,
+    .age,
+    .gender {
+        grid-column: 1;
+    }
+
+    .panel {
+        padding: 14px;
+    }
+}

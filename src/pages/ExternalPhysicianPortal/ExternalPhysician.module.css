@@ -1,0 +1,635 @@
+.portalShell {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
+  padding: 18px 7px 0;
+  background: #fff;
+  font-family: Calibri, "Segoe UI", Arial, sans-serif;
+}
+
+/* ---------- Header ---------- */
+.header {
+  box-sizing: border-box;
+  display: flex;
+  height: 72px;
+  min-height: 72px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px 0 8px;
+  background: #f2f2f2;
+}
+
+.title {
+  margin: 0;
+  color: #5b9bd5;
+  font-size: 34px;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.account {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  color: #5b9bd5;
+  padding-top: 4px;
+}
+
+.account small {
+  font-size: 14px;
+}
+
+.headerIcons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 16px;
+}
+
+.iconButton {
+  display: grid;
+  width: 30px;
+  height: 26px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #3f78b5;
+  cursor: pointer;
+}
+
+.iconButton:focus-visible,
+.navItem:focus-visible {
+  outline: 2px solid #1f4e8c;
+  outline-offset: 2px;
+}
+
+/* ---------- Patient banner (other tabs) ---------- */
+.patient {
+  box-sizing: border-box;
+  display: grid;
+  min-height: 84px;
+  grid-template-columns: 80px minmax(250px, 1fr) 1fr 1fr;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 18px 12px;
+  border: 1px solid #5b9bd5;
+  background: #f4f7fb;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #5b9bd5;
+}
+
+.patientInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.patientName {
+  color: #5b9bd5;
+  font-size: 32px;
+}
+
+.age {
+  color: #c00000;
+  font-size: 17px;
+}
+
+.gender {
+  justify-self: center;
+  color: #5b9bd5;
+  font-size: 17px;
+}
+
+.arabicName {
+  justify-self: end;
+  color: #5b9bd5;
+  font-size: 28px;
+}
+
+/* ---------- Layout ---------- */
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  gap: 37px;
+  margin-top: 13px;
+  padding-right: 36px;
+}
+
+.sidebar {
+  box-sizing: border-box;
+  flex: 0 0 210px;
+  min-height: 718px;
+  padding: 8px 14px;
+  border: 1px solid #5b9bd5;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  background: #fff;
+}
+
+.navItem {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #5b9bd5;
+  font: inherit;
+  font-size: 18px;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.active {
+  color: #c00000;
+  font-weight: 700;
+}
+
+.content {
+  min-width: 0;
+  flex: 1;
+  padding: 0 0 10px 0;
+}
+
+/* ---------- Add patient form ---------- */
+.patientForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.formGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 33px;
+  padding-top: 14px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 40px;
+}
+
+.half {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.halfLeft .formLabel {
+  width: 140px;
+  text-align: right;
+}
+
+.halfLeft .control {
+  width: 278px;
+}
+
+.halfRight {
+  justify-content: flex-end;
+}
+
+.halfRight .formLabel {
+  width: 215px;
+  text-align: right;
+}
+
+.halfRight .control {
+  width: 216px;
+  flex: 0 0 216px;
+}
+
+.halfRight .control.wide {
+  width: 316px;
+  flex: 0 0 316px;
+}
+
+.halfRtl {
+  direction: rtl;
+  justify-content: flex-start;
+  padding-right: 50px;
+  box-sizing: border-box;
+}
+
+.halfRtl .formLabelArabic {
+  width: auto;
+  text-align: right;
+  margin-left: 6px;
+}
+
+.formLabel,
+.formLabelArabic {
+  color: #5b9bd5;
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.formInput,
+.formInputArabic,
+.formSelect,
+.formTextarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: 34px;
+  border: 1px solid #5b9bd5;
+  border-radius: 0;
+  background: #fff;
+  color: #5b9bd5;
+  font: inherit;
+  font-size: 20px;
+  padding: 0 12px;
+  outline: none;
+}
+
+.formInput:focus,
+.formInputArabic:focus,
+.formSelect:focus,
+.formTextarea:focus {
+  box-shadow: 0 0 0 2px rgba(91, 155, 213, 0.3);
+}
+
+.formInputArabic {
+  direction: rtl;
+  text-align: right;
+}
+
+.control {
+  position: relative;
+  display: block;
+}
+
+/* dropdown arrow box */
+.selectWrap::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 31px;
+  height: 100%;
+  box-sizing: border-box;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='10' viewBox='0 0 16 10'><path d='M1 2l7 6 7-6' fill='none' stroke='white' stroke-width='1.5'/></svg>")
+    center / 16px 10px no-repeat,
+    #8bb5df;
+  border: 1px solid #c5d9ee;
+  pointer-events: none;
+}
+
+.formSelect {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.dateIcon {
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #3f78b5;
+  pointer-events: none;
+}
+
+/* Comment fieldset */
+.commentWrap {
+  margin: 0;
+  margin-top: 6px;
+  padding: 22px 48px 25px;
+  border: 1px solid #5b9bd5;
+  min-width: 0;
+}
+
+.commentLabel {
+  padding: 0 8px;
+  margin-left: 8px;
+  color: #5b9bd5;
+  font-size: 26px;
+}
+
+.commentBox,
+.formTextarea {
+  display: block;
+  width: 100%;
+  height: 130px;
+  padding: 8px 12px;
+  border: 1px solid #5b9bd5;
+  background: #fff;
+  color: #5b9bd5;
+  font-size: 20px;
+  line-height: 27px;
+  resize: none;
+}
+
+.actionRow {
+  display: flex;
+  justify-content: flex-end;
+  padding: 62px 58px 0 0;
+}
+
+.saveButton {
+  box-sizing: border-box;
+  width: 112px;
+  height: 34px;
+  border: 2px solid #b4cbe5;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #8dbbe8 0%, #4f8fd0 50%, #6aa6dd 51%, #a9d0f3 100%);
+  color: #fff;
+  font: inherit;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.saveButton:hover {
+  filter: brightness(1.05);
+}
+
+/* ---------- Add medication ---------- */
+.medicationPage {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0 0 0;
+}
+
+.searchRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 10px 0 10px;
+}
+
+.searchGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.searchGroup .control {
+  width: 210px;
+}
+
+.searchGroup .control.idControl {
+  width: 216px;
+}
+
+.resultsBox {
+  margin: 20px 0 0;
+  padding: 10px 30px 22px 16px;
+  border: 1px solid #5b9bd5;
+  min-width: 0;
+}
+
+.resultsBox legend {
+  padding: 0 8px;
+  margin-left: 4px;
+  color: #5b9bd5;
+  font-size: 22px;
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 18px;
+  column-gap: 24px;
+}
+
+.resultItem {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  color: #5b9bd5;
+  font-size: 20px;
+}
+
+.resultItem .resultLabel {
+  width: 130px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.resultItemRight {
+  justify-content: flex-end;
+  direction: rtl;
+  padding-right: 8px;
+}
+
+.resultItemRight .resultLabel {
+  width: auto;
+  text-align: right;
+}
+
+.addMedicineLink {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin: 28px 20px 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #4a7fb5;
+  font: inherit;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.medicineForm {
+  box-sizing: border-box;
+  width: calc(100% - 46px);
+  margin: 60px 0 0 28px;
+  border-radius: 6px;
+  background: #5b9bd5;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  padding-bottom: 6px;
+}
+
+.formHeader {
+  padding: 18px 14px 16px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.medicineBody {
+  margin: 0 8px 2px;
+  padding: 18px 54px 26px 30px;
+  background: #fff;
+}
+
+.medicineFields {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.medicineField {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #5b9bd5;
+  font-size: 20px;
+}
+
+.medicineField .fieldLabel {
+  color: #5b9bd5;
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.medicineField.nameField .formInput {
+  width: 245px;
+}
+
+.medicineField.doseField .formInput {
+  width: 316px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 32px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 800px) {
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .half,
+  .halfRight,
+  .halfRtl {
+    justify-content: flex-start;
+    padding-right: 0;
+  }
+
+  .halfLeft .formLabel,
+  .halfRight .formLabel {
+    width: 150px;
+  }
+
+  .halfLeft .control,
+  .halfRight .control,
+  .halfRight .control.wide {
+    flex: 1;
+    width: auto;
+  }
+
+  .commentWrap {
+    padding: 16px;
+  }
+
+  .actionRow {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .portalShell {
+    min-height: calc(100vh - 24px);
+  }
+
+  .header {
+    height: 60px;
+    min-height: 60px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .patient {
+    min-height: 84px;
+    grid-template-columns: 54px 1fr;
+    padding: 8px 12px;
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .patientName {
+    font-size: 22px;
+  }
+
+  .gender {
+    justify-self: start;
+    grid-column: 2;
+  }
+
+  .arabicName {
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: start;
+  }
+
+  .body {
+    flex-direction: column;
+    gap: 16px;
+    flex: initial;
+    padding-right: 0;
+  }
+
+  .sidebar {
+    min-height: auto;
+    flex-basis: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+  }
+
+  .content {
+    padding: 8px 0 16px;
+  }
+
+  .searchRow,
+  .medicineFields,
+  .resultsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .medicineForm {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.bottomBar {
+  display: flex;
+  justify-content: flex-start;
+  padding: 12px 0 18px;
+}
+
+.logout {
+  padding: 8px 20px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  background: #c00000;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+

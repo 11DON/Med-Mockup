@@ -1,0 +1,150 @@
+/* list */
+.topBar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.addLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #4a7ebb;
+  text-decoration: none;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px 24px;
+  border: 1px solid #5b9bd5;
+  padding: 14px 20px;
+  margin-bottom: 12px;
+  color: #777;
+  text-decoration: none;
+}
+
+.card span {
+  color: #5b9bd5;
+  margin-right: 6px;
+}
+
+/* form */
+.form {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 12px 12px;
+  align-items: start;
+  max-width: 950px;
+}
+
+.form label {
+  text-align: right;
+  color: #5b9bd5;
+  padding-top: 4px;
+}
+
+.form input:not([type="file"]),
+.form select,
+.form textarea {
+  border: 1px solid #5b9bd5;
+  padding: 6px;
+  font: inherit;
+  color: #777;
+}
+
+.form select {
+  width: 250px;
+}
+
+.formButtons {
+  grid-column: 2;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.error {
+  grid-column: 2;
+  color: #c0392b;
+  margin: 0;
+}
+
+.send {
+  min-width: 105px;
+  padding: 4px 18px;
+  color: #fff;
+  font: inherit;
+  border: 1px solid #3a7bc0;
+  border-radius: 3px;
+  background: linear-gradient(#a6d3f0, #5597cf);
+  box-shadow: inset 0 1px 2px #ffffffa6, 0 1px 2px #777;
+  cursor: pointer;
+}
+
+/* chat */
+.threadHead {
+  display: flex;
+  gap: 60px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.threadHead b {
+  color: #5b9bd5;
+  font-weight: normal;
+}
+
+.thread {
+  display: flex;
+  flex-direction: column;
+}
+
+.rowMe,
+.rowClinic {
+  width: 65%;
+  margin-bottom: 20px;
+}
+
+.rowMe {
+  align-self: flex-start;
+}
+
+.rowClinic {
+  align-self: flex-end;
+  
+}
+
+.meta {
+  color: #777;
+  margin-bottom: 4px;
+}
+.rowClinic .meta{
+    text-align: right;
+
+}
+.meta b {
+  color: #5b9bd5;
+  font-weight: normal;
+}
+
+.bubble {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 90px;
+  border: 2px solid #4a7ebb;
+  border-radius: 24px;
+  padding: 14px 24px;
+  font: inherit;
+  color: #4a7ebb;
+  background: #fff;
+}
+.bubbleClinic {
+  background: #eeeeee;
+  border-color: #9aa5b1;
+}
+.root {
+  font-size: 125%;
+  padding-top: 20px;
+}

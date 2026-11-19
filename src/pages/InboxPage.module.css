@@ -1,0 +1,49 @@
+
+.pageTitle {
+    color: #4a90d9;
+    margin: 20px 0;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.gridContainer {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.divider {
+    position: relative;
+    flex: 0 0 8px;            
+    background: transparent;
+    cursor: col-resize;
+    touch-action: none;
+    outline: none;
+    z-index: 1;               
+}
+
+.logoutButton {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 20;
+    padding: 8px 18px;
+    border: 1px solid #a32020;
+    border-radius: 4px;
+    background: #c62828;
+    color: #fff;
+    font-size: 16px;
+  cursor: pointer;
+}
+
+
+
+.logoutButton:focus-visible {
+    outline: 2px solid #4a1010;
+    outline-offset: 2px;
+}

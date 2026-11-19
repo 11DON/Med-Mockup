@@ -1,0 +1,46 @@
+.content {
+    display: flex;
+    gap: 300px;
+    color: #5b9bd5;
+}
+
+.content p {
+    color: #5b9bd5;
+    font-size: 1.5rem;
+}
+
+.heading {
+    margin: 0 0 0px;
+    color: #5b9bd5;
+    font-size: 1.65rem;
+    text-decoration: underline;
+}
+
+.content p {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.3;
+}
+
+.school {
+    padding-top: 30px;
+}
+
+@media (max-width: 560px) {
+    .content {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .school {
+        padding-top: 0;
+    }
+
+    .content p {
+        overflow-wrap: anywhere;
+    }
+
+    .heading {
+        font-size: 1.4rem;
+    }
+}

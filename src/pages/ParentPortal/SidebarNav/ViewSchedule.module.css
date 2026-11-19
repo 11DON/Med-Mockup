@@ -1,0 +1,290 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: Calibri, Arial, sans-serif;
+}
+
+.page {
+  box-sizing: border-box;
+  display: grid;
+  min-height: 490px;
+  grid-template-columns: minmax(330px, 0.48fr) minmax(0, 1fr);
+  gap: 18px;
+  padding: 8px;
+  border: 1px solid #5b9bd5;
+  color: #777;
+  font-size: 20px;
+}
+
+.calendarPanel {
+  min-width: 0;
+}
+
+.calendarTitle {
+  margin: 0 0 6px 8px;
+  color: #5b9bd5;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.calendar {
+  box-sizing: border-box;
+  height: 322px;
+  padding: 6px 8px 10px;
+  border: 1px solid #888;
+  box-shadow: 0 2px 3px #0002;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  align-items: center;
+  margin-bottom: 8px;
+  color: #222;
+  font-size: 24px;
+  text-align: center;
+}
+
+.head button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #888;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: center;
+  gap: 4px 2px;
+  color: #222;
+  text-align: center;
+}
+
+.grid button {
+  min-width: 0;
+  padding: 3px 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.green {
+  background: #d7e5d7 !important;
+}
+
+.blue {
+  background: #d7e6f4 !important;
+}
+
+.selected {
+  outline: 2px solid #c0504d;
+  outline-offset: -2px;
+  background: #f0d7d7 !important;
+}
+
+.details {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 6px;
+}
+
+.dataPanel {
+  box-sizing: border-box;
+  min-width: 0;
+  margin: 0;
+  padding: 8px 10px 10px;
+  border: 1px solid #5b9bd5;
+}
+
+.dataPanel legend {
+  padding: 0 6px;
+  color: #5b9bd5;
+  font-size: 17px;
+}
+
+.dataPanel p {
+  min-width: 0;
+  margin: 0;
+}
+
+.patientData {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.patientName,
+.patientArabic {
+  color: #5b9bd5;
+  font-size: 26px;
+}
+
+.patientExtra {
+  text-align: right;
+}
+
+.age {
+  color: #c00000;
+  font-size: 16px;
+}
+
+.gender {
+  color: #c55a11;
+  font-size: 16px;
+}
+
+.sessionData,
+.planData {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 6px 14px;
+  padding: 0 8px;
+}
+
+.sessionData p,
+.planData p {
+  display: flex;
+  gap: 8px;
+}
+
+.sessionData span,
+.planData > p > span:first-child,
+.progressRow > span {
+  flex: 0 0 auto;
+  color: #5b9bd5;
+}
+
+.noSession {
+  padding: 0 8px;
+}
+
+.red,
+.red > span:first-child {
+  color: #c00000;
+}
+
+.blueText {
+  color: #5b9bd5;
+}
+
+.greenText,
+.greenText > span:first-child {
+  color: #4e7d2c;
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.taskList em {
+  font-style: normal;
+}
+
+.progressRow {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #5b9bd5;
+}
+
+.progressTrack {
+  width: min(180px, 60%);
+  height: 14px;
+  background: linear-gradient(#bbb, #eee 45%, #bbb);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(#9dd79d, #46b34b);
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+  padding: 0 20px 10px;
+}
+
+.action,
+.noShow {
+  min-width: 112px;
+  padding: 4px 14px;
+  border: 1px solid #3a7bc0;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 2px #ffffffa6, 0 1px 2px #777;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.action {
+  background: linear-gradient(#a6d3f0, #5597cf);
+}
+
+.noShow {
+  border-color: #999;
+  background: linear-gradient(#ddd, #999);
+}
+
+.action:focus-visible,
+.noShow:focus-visible,
+.head button:focus-visible,
+.grid button:focus-visible {
+  outline: 2px solid #1f4e8c;
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding: 8px;
+  }
+
+  .calendar {
+    height: auto;
+    min-height: 310px;
+  }
+
+  .details {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    min-height: 0;
+    font-size: 16px;
+  }
+
+  .patientData {
+    flex-direction: column;
+  }
+
+  .patientExtra {
+    text-align: left;
+  }
+
+  .sessionData,
+  .planData {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 8px 10px;
+  }
+}

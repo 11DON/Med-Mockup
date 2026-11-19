@@ -1,0 +1,299 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #777;
+  font-size: 20px;
+}
+
+.page fieldset {
+  box-sizing: border-box;
+  min-width: 0;
+  margin: 0;
+  padding: 8px 12px 12px;
+  border: 1px solid #5b9bd5;
+}
+
+.page legend {
+  padding: 0 6px;
+  color: #5b9bd5;
+  font-size: 17px;
+}
+
+.patient {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr) minmax(150px, 0.6fr) minmax(180px, 0.8fr);
+  align-items: center;
+  gap: 18px;
+}
+
+.patient img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.patient h2,
+.patient p {
+  margin: 0;
+}
+
+.patient h2,
+.arabic {
+  color: #5b9bd5;
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.patient h2 {
+  white-space: nowrap;
+}
+
+.patient div > p {
+  color: #c00000;
+  font-size: 18px;
+}
+
+.gender {
+  color: #c55a11;
+}
+
+.arabic {
+  text-align: right;
+}
+
+.plan {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 8px 20px;
+  padding: 0 8px;
+}
+
+.plan p {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+}
+
+.plan > p > span:first-child,
+.description > span,
+.session > p > span,
+.sessionDuration > span,
+.goals > label,
+.goals > span:not(.columnHeading) {
+  color: #5b9bd5;
+}
+
+.ltg,
+.ltg > span:first-child {
+  color: #c00000;
+}
+
+.stg {
+  color: #5b9bd5;
+}
+
+.tasks,
+.tasks > span:first-child {
+  color: #4e7d2c;
+}
+
+.taskList {
+  color: #777;
+}
+
+.description {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 16px;
+  color: #5b9bd5;
+}
+
+.description p {
+  box-sizing: border-box;
+  min-height: 105px;
+  margin: 0;
+  padding: 12px;
+  background: #d9d9d9;
+  color: #777;
+  line-height: 1.35;
+}
+
+.session {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 0 8px;
+}
+
+.session p {
+  margin: 0;
+}
+
+.session p span,
+.sessionDuration > span {
+  margin-right: 10px;
+  color: #5b9bd5;
+}
+
+.sessionDuration {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.progressTrack {
+  width: 185px;
+  height: 14px;
+  background: linear-gradient(#bbb, #eee 45%, #bbb);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(#9dd79d, #46b34b);
+}
+
+.goals {
+  display: grid;
+  grid-template-columns: 135px 76px 76px 1fr;
+  align-items: center;
+  justify-items: start;
+  gap: 12px 16px;
+  padding: 0 16px;
+}
+
+.columnHeading {
+  justify-self: center;
+  color: #999;
+  font-size: 16px;
+}
+
+.columnHeading:first-child {
+  grid-column: 2;
+}
+
+.columnHeading:nth-child(2) {
+  grid-column: 3;
+}
+
+.goals input[type="number"] {
+  box-sizing: border-box;
+  width: 76px;
+  height: 27px;
+  border: 1px solid #5b9bd5;
+  color: #5b9bd5;
+  font: inherit;
+  text-align: center;
+}
+
+.goals .previousValue {
+  background: #d9d9d9;
+}
+
+.goals input[type="checkbox"] {
+  justify-self: center;
+  accent-color: #5b9bd5;
+}
+
+.check {
+  color: #4e7d2c !important;
+}
+
+.change {
+  font-size: 16px;
+}
+
+.changePositive {
+  color: #47c511 !important;
+}
+
+.changeNegative {
+  color: #c00000 !important;
+}
+
+.changeNeutral {
+  color: #777 !important;
+}
+
+.goalProgress {
+  grid-column: 2 / span 2;
+}
+
+.actions {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 0 20px;
+}
+
+.actions button {
+  min-width: 112px;
+  padding: 5px 20px;
+  border: 1px solid #3a7bc0;
+  border-radius: 3px;
+  background: linear-gradient(#a6d3f0, #5597cf);
+  box-shadow: inset 0 1px 2px #ffffffa6, 0 1px 2px #777;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.saved {
+  color: #4e7d2c;
+}
+
+@media (max-width: 760px) {
+  .page {
+    font-size: 16px;
+  }
+
+  .patient {
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .patient img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .patient h2,
+  .arabic {
+    font-size: 19px;
+    white-space: normal;
+  }
+
+  .gender,
+  .arabic {
+    grid-column: 2;
+  }
+
+  .plan,
+  .session {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .description {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .goalProgress {
+    grid-column: 2 / span 2;
+  }
+
+  .actions {
+    padding: 0;
+  }
+}

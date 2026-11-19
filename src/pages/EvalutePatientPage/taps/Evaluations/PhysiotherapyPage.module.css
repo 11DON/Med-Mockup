@@ -1,0 +1,531 @@
+.page {
+  zoom: 1.75;
+  display: grid;
+  gap: 14px;
+  color: #3879ad;
+  font-size: calc(13px * var(--font-scale, 1));
+}
+
+.moduleLayout {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  align-items: start;
+  gap: 8px;
+}
+
+.moduleContent {
+  display: grid;
+  min-width: 0;
+  gap: 14px;
+}
+
+.sectionNavContainer {
+  min-width: 0;
+}
+
+.sectionNavToggle {
+  display: flex;
+  width: 100%;
+  min-height: 36px;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 10px;
+  border: 1px solid #85b8e4;
+  background: #fff;
+  color: #3879ad;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.hamburgerIcon {
+  display: flex;
+  width: 16px;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hamburgerIcon span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+}
+
+.sectionNav {
+  box-sizing: border-box;
+  width: 130px;
+  display: flex;
+  min-height: 240px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #85b8e4;
+  background: #fff;
+}
+
+.sectionNavCollapsed {
+  display: none;
+}
+
+.sectionNavExpanded {
+  display: flex;
+}
+
+.sectionNavLink {
+  display: block;
+  width: 100%;
+  padding: 2px 3px;
+  box-sizing: border-box;
+  color: #3879ad;
+  font-size: calc(10px * var(--font-scale, 1));
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.sectionNavLink:hover,
+.sectionNavLink:focus-visible {
+  background: #edf6ff;
+  text-decoration: underline;
+}
+
+.serviceDomain {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: #5b9bd5;
+  font-size: calc(13px * var(--font-scale, 1.3));
+}
+
+.serviceDomain select {
+  min-width: 150px;
+  padding: 3px 6px;
+  border: 1px solid #5b9bd5;
+  background: #fff;
+  color: #4a90d9;
+  font: inherit;
+}
+
+.page section[id] {
+  scroll-margin-top: 8px;
+}
+
+.pageHeading,
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pageHeading h1 {
+  margin: 0;
+  font-size: calc(20px * var(--font-scale, 1));
+}
+
+.backButton,
+.addButton {
+  border: 0;
+  background: transparent;
+  color: #dc9900;
+  font: inherit;
+  cursor: pointer;
+}
+
+.backButton {
+  color: #3879ad;
+  text-decoration: underline;
+}
+
+.section {
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid #85b8e4;
+  background: #fff;
+}
+
+.sectionHeader {
+  margin-bottom: 6px;
+}
+
+.sectionActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sectionHeader h2 {
+  margin: 0;
+  font-size: calc(15px * var(--font-scale, 1.1));
+  font-weight: 600;
+  color:#75169a
+}
+
+.addButton {
+  white-space: nowrap;
+}
+
+.addButton span {
+  font-size: calc(20px * var(--font-scale, 1));
+  font-weight: 700;
+  vertical-align: -1px;
+}
+
+.scaleGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.scaleCard {
+  position: relative;
+  min-height: 76px;
+  padding: 6px;
+  border: 1px solid #b1d1ec;
+  color: #5a9c46;
+  font-size: calc(11px * var(--font-scale, 1));
+}
+
+.scaleCard h3,
+.observation h3,
+.goalDetail h3,
+.exerciseLayout h3 {
+  margin: 0 0 4px;
+  font-size: calc(12px * var(--font-scale, 1.2));
+  font-weight: 400;
+}
+
+.scaleCard strong {
+  color: #e09800;
+  font-weight: 400;
+}
+
+.scaleCard p {
+  margin: 4px 16px 0 0;
+  color: #667987;
+}
+
+.settings {
+  position: absolute;
+  right: 4px;
+  bottom: 3px;
+  border: 0;
+  background: transparent;
+  color: #5b9bd5;
+  font-size: calc(15px * var(--font-scale, 1));
+  cursor: pointer;
+}
+
+.observationList {
+  display: grid;
+  gap: 6px;
+}
+
+.observation {
+  
+  min-height: 55px;
+  padding: 5px 7px;
+  border: 1px solid #b1d1ec;
+  color: #5a9c46;
+}
+
+.observation ul,
+.goalTree ul,
+.goalDetail ul,
+.exerciseLayout ul {
+  margin: 3px 0 0;
+  padding-left: 2px;
+  list-style-type:none
+  
+}
+
+.observation li {
+  color: #667987;
+  font-size: calc(13px * var(--font-scale, 1));
+}
+
+.detailsLabel{
+  color:#5b9bd5;
+}
+.tile{
+  color: red;
+}
+.safetyReminder{
+    color:#5b9bd5;
+
+}
+.summary p,
+.plan dl,
+.goalDetail,
+.exerciseDetail {
+  margin: 0;
+  color: #3f4b53;
+  font-size: calc(13px * var(--font-scale, 1));
+  line-height: 1.4;
+}
+.plan .frequencyUnit{
+  color: red;
+}
+.plan .times{
+  color: cadetblue;
+}
+.plan dl > div {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 4px;
+  margin: 2px 0;
+}
+
+.plan dt {
+  flex: 0 0 auto;
+  color: #3879ad;
+  font-weight: 700;
+}
+
+.plan dd {
+  margin: 0;
+}
+
+.plan dd :global(.ql-editor) {
+  min-height: 0;
+  padding: 0;
+}
+
+.plan dd :global(.ql-editor p) {
+  margin: 0;
+}
+
+.goalsLayout,
+.exerciseLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 8px;
+}
+
+.goalTree,
+.goalDetail,
+.exerciseTree,
+.exerciseDetail {
+  min-width: 0;
+  padding: 6px;
+  border: 1px solid #b1d1ec;
+}
+
+.goalTree {
+  color: #d64b00;
+}
+
+.goalGroup + .goalGroup {
+  margin-top: 5px;
+}
+
+.goalChildren {
+  margin: 3px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.goal {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #d64b00;
+  font: inherit;
+  font-size: calc(13px * var(--font-scale, 1));
+  text-align: left;
+  cursor: pointer;
+}
+
+.goalChildButton {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.goalChildButton:hover {
+  text-decoration: underline;
+}
+
+.activeGoal {
+  font-weight: 700;
+}
+
+.goalTree .subgoal {
+  margin-left: 16px;
+  color: #5b9bd5;
+  font-size: calc(13px * var(--font-scale, 1));
+}
+
+.goalTree .goalTask {
+  margin-left: 40px;
+  color: #4b8f32;
+  font-size: calc(13px * var(--font-scale, 1));
+}
+
+.goalTree li,
+.goalDetail li,
+.exerciseTree li {
+  color: #667987;
+  font-size: calc(13px * var(--font-scale, 1));
+}
+
+.activity {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.activity:hover {
+  text-decoration: underline;
+}
+
+.goalDetail h3 {
+  color: #3879ad;
+}
+
+
+.goalDetailLabel {
+  color: #5b9bd5;
+}
+
+.goalDetailValue {
+  color: #667987;
+}
+
+.durationValue {
+  color: #e15b16;
+}
+
+.goalDetail .fullDescription {
+  
+  list-style: none;
+}
+
+.scheduleControls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  color: #5b9bd5;
+}
+
+.scheduleControls select {
+  padding: 3px 6px;
+  border: 1px solid #5b9bd5;
+  background: #fff;
+  color: #5b9bd5;
+  font: inherit;
+}
+
+.scheduleActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.scheduleError {
+  flex-basis: 100%;
+  margin: 0;
+  color: #b00020;
+  font-size: calc(12px * var(--font-scale, 1));
+}
+
+.scheduleAction {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #dc9900;
+  font: inherit;
+  cursor: pointer;
+}
+
+.scheduleAction span {
+  font-size: calc(20px * var(--font-scale, 1));
+  font-weight: 700;
+  vertical-align: -1px;
+}
+
+.scheduleAction:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.fullDescriptionValue {
+  display: block;
+}
+
+.exerciseTree .exerciseGoal {
+  margin: 0 0 4px;
+  color: #d64b00;
+  font-size: calc(13px * var(--font-scale, 1));
+  font-weight: 700;
+}
+
+.exerciseTree .exerciseSubgoal {
+  margin-left: 16px;
+  color: #5b9bd5;
+  font-size: calc(13px * var(--font-scale, 1));
+}
+
+.exerciseTree .exerciseTask {
+  margin-left: 40px;
+  color: #4b8f32;
+  font-size: calc(13px * var(--font-scale, 1));
+}
+
+.exerciseTree ul + h3 {
+  margin-top: 6px;
+}
+
+.exerciseDetail p {
+  margin: 3px 0;
+}
+
+.page button:focus-visible {
+  outline: 2px solid #1f4e8c;
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .moduleLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionNav {
+    position: static;
+    width: 100%;
+    min-height: 0;
+    flex-direction: column;
+    gap: 2px;
+    border-top: 0;
+  }
+
+  .sectionNavLink {
+    width: 100%;
+    font-size: calc(8px * var(--font-scale, 1));
+  }
+
+  .scaleGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .goalsLayout,
+  .exerciseLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+  }
+}

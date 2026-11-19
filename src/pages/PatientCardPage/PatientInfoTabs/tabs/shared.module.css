@@ -1,0 +1,160 @@
+.p {
+    color: #4a90d9;
+    display: inline-flex;
+}
+
+.legend{
+    color: #4a90d9;
+    font-size: 3rem;
+}
+
+.field{
+    color: #4a90d9;
+    border: 1.5px solid;
+    border-color: #4a90d9;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: minmax(195px, 18%) minmax(0, 1fr);
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+}
+
+.value {
+  min-width: 0;
+  min-height: 39px;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  border:1.5px solid #5b9bd5;
+  color: #5b9bd5;
+  font-size: 1.5rem;
+}
+
+.numericValue {
+  width: 114px;
+  justify-self: start;
+}
+
+.multilineEntry {
+  margin-bottom: 15px;
+}
+
+.multiline {
+  min-height: 120px;
+  white-space: pre-wrap;
+}
+
+.multilineEntry:last-child {
+  margin-bottom: 0;
+}
+.label {
+  text-align: right;
+  color: #5b9bd5;
+  font-size: 1.3rem;
+  
+}
+
+
+.historyField {
+  align-items: start;
+}
+
+.historyField textarea {
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 0;
+  min-height: 90px;
+  padding: 7.5px 10.5px;
+  resize: vertical;
+  border: 1.5px solid #8db9e8;
+  border-radius: 0;
+  color: #5b9bd5;
+  font: inherit;
+}
+
+.historyLabel {
+  flex-basis: 232.5px;
+}
+
+.compactField {
+  font-size: inherit;
+}
+
+.compactLabel {
+  flex-basis: 232.5px;
+}
+
+.compactField input,
+.compactField select,
+.otherConditions input {
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 0;
+  height: 40.5px;
+  padding: 4.5px 12px;
+  border: 1.5px solid #8db9e8;
+  border-radius: 0;
+  color: #5b9bd5;
+  font: inherit;
+}
+
+
+.checkField {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  min-width: 0;
+  color: #5b9bd5;
+  text-align: right;
+}
+
+.checkField input {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  accent-color: #5b9bd5;
+}
+
+
+@media (max-width: 560px) {
+    .legend {
+        font-size: 2rem;
+    }
+    .entry {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+    .label,
+  .value,
+  .checkEntry .label {
+    font-size: 1.2rem;
+  }
+
+}
+
+
+@media(max-width:1050px){
+  
+  .checkField {
+    justify-content: flex-start;
+    text-align: left;
+  }
+    .historyField {
+    flex-direction: column;
+    gap: 7.5px;
+  }
+
+  .historyLabel,
+  .compactLabel {
+    flex-basis: auto;
+    text-align: left;
+  }
+
+
+   
+
+}

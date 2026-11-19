@@ -1,0 +1,214 @@
+/* ---------- window ---------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1000;
+}
+
+.modal {
+  width: min(720px, 95vw);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 4px solid #5b9bd5;
+  border-top: 0;
+}
+
+.header {
+  margin: 0 -4px;
+  padding: 8px 12px;
+  background: #5b9bd5;
+  color: #fff;
+  font-weight: 700;
+  font-size: calc(13px * var(--font-scale, 1));
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  overflow: auto;
+  color: #4a90d9;
+  font-size: calc(13px * var(--font-scale, 1));
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+  padding: 0 12px 12px;
+}
+
+.cancel,
+.save {
+  min-width: 80px;
+  padding: 4px 14px;
+  border-radius: 3px;
+  border: 1px solid #6b8fb5;
+  cursor: pointer;
+}
+
+.cancel {
+  background: #d9d9d9;
+  color: #666;
+}
+
+.save {
+  background: #4f94d4;
+  color: #fff;
+}
+
+.save:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- titles and boxes ---------- */
+.subtitle {
+  margin: 0;
+  color: #666;
+  font-size: calc(16px * var(--font-scale, 1));
+}
+
+.sectionTitle {
+  margin: 0 0 4px;
+  color: #4a90d9;
+  font-size: calc(14px * var(--font-scale, 1));
+  font-weight: 700;
+}
+
+.box {
+  border: 1px solid #5b9bd5;
+  padding: 10px;
+}
+
+/* ---------- form fields ---------- */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.field > span {
+  text-align: right;
+}
+
+.control {
+  min-width: 0;
+  padding: 3px 6px;
+  border: 1px solid #5b9bd5;
+  background: #fff;
+  color: #4a90d9;
+  font-size: calc(13px * var(--font-scale, 1));
+}
+
+.control:disabled {
+  background: #d9d9d9;
+}
+
+.template {
+  color: #666;
+  line-height: 1.5;
+}
+
+/* "Label: [control] text [control]" on one line */
+.inlineRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inlineRow > span:first-child {
+  width: 80px;
+  text-align: right;
+}
+
+.grow {
+  flex: 1;
+}
+
+/* ---------- two panes (Add Activity) ---------- */
+.twoPane {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 12px;
+}
+.list,
+.params {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.params {
+  gap: 10px;
+  min-height: 200px;
+}
+
+.list {
+  height: 360px;          /* fixed height, so the modal can't grow with the list */
+  min-height: 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.list > * {
+  flex: 0 0 auto;         /* cards keep their natural height and the list scrolls */
+}
+
+/* ---------- cards ---------- */
+.card {
+  padding: 6px 8px;
+  border: 1px solid #5b9bd5;
+}
+
+.cardChecked {
+  background: #e6e6e6;
+}
+
+.cardTitle {
+  display: block;
+  color: #548235;
+  font-size: calc(15px * var(--font-scale, 1));
+  cursor: pointer;
+}
+
+.cardDesc {
+  margin: 2px 0 0;
+  color: #777;
+  font-size: calc(11px * var(--font-scale, 1));
+}
+
+/* ---------- assign tasks: list | arrows | list ---------- */
+.taskLayout {
+  display: grid;
+  grid-template-columns: 1fr 36px 1fr;
+  gap: 6px;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.arrowButton {
+  border: 0;
+  padding: 4px 0;
+  background: #5b9bd5;
+  color: #fff;
+  cursor: pointer;
+}
